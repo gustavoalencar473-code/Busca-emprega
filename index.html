@@ -69,7 +69,7 @@ button:hover {
   background: #125b3a;
 }
 
-input, select {
+input, select, textarea {
   width: 100%;
   padding: 14px;
   border: 1px solid #ccc;
@@ -77,6 +77,12 @@ input, select {
   font-size: 16px;
   margin: 9px 0 17px;
   background: white;
+  font-family: Arial, sans-serif;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
 label {
@@ -86,7 +92,7 @@ label {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .voltar {
@@ -102,6 +108,23 @@ label {
 
 .vaga h3 {
   color: #15375b;
+}
+
+.aviso {
+  background: #eaf2fa;
+  padding: 14px;
+  border-radius: 9px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.sucesso {
+  background: #e6f5eb;
+  color: #17643b;
+  padding: 16px;
+  border-radius: 10px;
+  line-height: 1.5;
+  margin-top: 15px;
 }
 
 footer {
@@ -123,11 +146,13 @@ footer {
 <main class="container">
 
   <!-- TELA INICIAL -->
+
   <section id="inicio">
 
     <div class="card">
       <h2>Estou procurando emprego</h2>
       <p>Encontre oportunidades de trabalho na sua região.</p>
+
       <button onclick="abrirBusca()">
         Buscar emprego
       </button>
@@ -136,7 +161,8 @@ footer {
     <div class="card">
       <h2>Sou empresa</h2>
       <p>Encontre profissionais para sua empresa.</p>
-      <button onclick="alert('Cadastro de empresas será desenvolvido na próxima etapa.')">
+
+      <button onclick="abrirEmpresa()">
         Oferecer emprego
       </button>
     </div>
@@ -144,6 +170,7 @@ footer {
     <div class="card">
       <h2>Currículos</h2>
       <p>Cadastre seu currículo e encontre oportunidades.</p>
+
       <button onclick="alert('Cadastro de currículos será desenvolvido na próxima etapa.')">
         Cadastrar currículo
       </button>
@@ -152,6 +179,7 @@ footer {
   </section>
 
   <!-- TELA DE BUSCA -->
+
   <section id="busca" class="hidden">
 
     <div class="card">
@@ -186,7 +214,9 @@ footer {
 
         <div id="campoCidade" class="hidden">
 
-          <label for="cidade">Escolha sua cidade:</label>
+          <label for="cidade">
+            Escolha sua cidade:
+          </label>
 
           <select id="cidade">
             <option>Itiquira - MT</option>
@@ -233,6 +263,214 @@ footer {
 
   </section>
 
+  <!-- TELA DE CADASTRO DE EMPRESA -->
+
+  <section id="empresa" class="hidden">
+
+    <div class="card">
+
+      <button class="voltar" onclick="voltarInicio()">
+        ← Voltar
+      </button>
+
+      <h2>Oferecer emprego</h2>
+
+      <p>
+        Cadastre sua empresa e informe a oportunidade
+        de trabalho disponível.
+      </p>
+
+      <div class="aviso">
+        Preencha os dados corretamente.
+        As informações da empresa serão utilizadas
+        para identificação e verificação do cadastro.
+      </div>
+
+      <form id="formEmpresa">
+
+        <h2>1. Dados da empresa</h2>
+
+        <label for="nomeEmpresa">
+          Nome da empresa
+        </label>
+
+        <input
+          id="nomeEmpresa"
+          type="text"
+          placeholder="Nome da empresa"
+          required
+        >
+
+        <label for="cnpj">
+          CNPJ
+        </label>
+
+        <input
+          id="cnpj"
+          type="text"
+          placeholder="00.000.000/0000-00"
+          required
+        >
+
+        <label for="responsavel">
+          Nome do responsável
+        </label>
+
+        <input
+          id="responsavel"
+          type="text"
+          placeholder="Nome completo"
+          required
+        >
+
+        <label for="telefoneEmpresa">
+          Telefone ou WhatsApp
+        </label>
+
+        <input
+          id="telefoneEmpresa"
+          type="tel"
+          placeholder="(00) 00000-0000"
+          required
+        >
+
+        <h2>2. Informações da vaga</h2>
+
+        <label for="cargo">
+          Nome do cargo
+        </label>
+
+        <input
+          id="cargo"
+          type="text"
+          placeholder="Ex.: Motorista, vendedor..."
+          required
+        >
+
+        <label for="quantidade">
+          Quantidade de vagas
+        </label>
+
+        <input
+          id="quantidade"
+          type="number"
+          min="1"
+          placeholder="Ex.: 2"
+          required
+        >
+
+        <label for="salario">
+          Salário oferecido
+        </label>
+
+        <input
+          id="salario"
+          type="text"
+          placeholder="Ex.: R$ 2.500,00"
+          required
+        >
+
+        <label for="tipoVaga">
+          Tipo de trabalho
+        </label>
+
+        <select id="tipoVaga" required>
+          <option value="">Selecione</option>
+          <option>Carteira assinada</option>
+          <option>Período integral</option>
+          <option>Meio período</option>
+          <option>Temporário</option>
+          <option>Estágio</option>
+          <option>Autônomo</option>
+        </select>
+
+        <label for="horario">
+          Horário de trabalho
+        </label>
+
+        <input
+          id="horario"
+          type="text"
+          placeholder="Ex.: 07h às 17h"
+          required
+        >
+
+        <label for="idade">
+          Idade exigida (se houver)
+        </label>
+
+        <input
+          id="idade"
+          type="text"
+          placeholder="Ex.: 18 anos ou mais"
+        >
+
+        <label for="requisitos">
+          Requisitos e especificações
+        </label>
+
+        <textarea
+          id="requisitos"
+          placeholder="Descreva as exigências e qualificações necessárias..."
+          required
+        ></textarea>
+
+        <h2>3. Localização da vaga</h2>
+
+        <label for="cidadeEmpresa">
+          Cidade
+        </label>
+
+        <select id="cidadeEmpresa" required>
+          <option value="">Selecione a cidade</option>
+          <option>Itiquira - MT</option>
+          <option>Rondonópolis - MT</option>
+          <option>Pedra Preta - MT</option>
+          <option>Alto Garças - MT</option>
+          <option>Guiratinga - MT</option>
+          <option>Outra cidade</option>
+        </select>
+
+        <label for="endereco">
+          Endereço completo da vaga
+        </label>
+
+        <textarea
+          id="endereco"
+          placeholder="Rua, número, bairro e ponto de referência..."
+          required
+        ></textarea>
+
+        <label for="descricao">
+          Descrição adicional da oportunidade
+        </label>
+
+        <textarea
+          id="descricao"
+          placeholder="Outras informações importantes sobre a vaga..."
+        ></textarea>
+
+        <div class="aviso">
+          Ao continuar, você estará enviando os dados
+          para uma demonstração do cadastro.
+
+          A verificação do CNPJ, o pagamento e a
+          publicação definitiva serão implementados
+          nas próximas etapas.
+        </div>
+
+        <button type="submit">
+          CADASTRAR OPORTUNIDADE
+        </button>
+
+      </form>
+
+      <div id="confirmacao" class="hidden"></div>
+
+    </div>
+
+  </section>
+
 </main>
 
 <footer>
@@ -245,12 +483,21 @@ footer {
 
 function abrirBusca() {
   document.getElementById("inicio").classList.add("hidden");
+  document.getElementById("empresa").classList.add("hidden");
   document.getElementById("busca").classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+
+function abrirEmpresa() {
+  document.getElementById("inicio").classList.add("hidden");
+  document.getElementById("busca").classList.add("hidden");
+  document.getElementById("empresa").classList.remove("hidden");
   window.scrollTo(0, 0);
 }
 
 function voltarInicio() {
   document.getElementById("busca").classList.add("hidden");
+  document.getElementById("empresa").classList.add("hidden");
   document.getElementById("inicio").classList.remove("hidden");
   window.scrollTo(0, 0);
 }
@@ -273,6 +520,43 @@ document.getElementById("formBusca")
     );
 
   });
+
+document.getElementById("formEmpresa")
+  .addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const nome = document.getElementById("nomeEmpresa").value;
+    const cargo = document.getElementById("cargo").value;
+    const cidade = document.getElementById("cidadeEmpresa").value;
+
+    document.getElementById("confirmacao").classList.remove("hidden");
+
+    document.getElementById("confirmacao").className = "sucesso";
+
+    document.getElementById("confirmacao").innerHTML =
+      "<h3>Cadastro demonstrativo preenchido!</h3>" +
+      "<p>Empresa: " + escapar(nome) + "</p>" +
+      "<p>Vaga: " + escapar(cargo) + "</p>" +
+      "<p>Cidade: " + escapar(cidade) + "</p>" +
+      "<p>Os dados ainda não foram salvos nem publicados. " +
+      "A próxima etapa será conectar o cadastro ao sistema.</p>";
+
+    window.scrollTo(0, document.body.scrollHeight);
+
+  });
+
+function escapar(valor) {
+  return String(valor).replace(/[&<>"']/g, function(caractere) {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    }[caractere];
+  });
+}
 
 </script>
 
