@@ -1,85 +1,280 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Busca Emprega Soluções</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Busca Emprega Soluções</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f4f7;
-      color: #222;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f3f7;
+  color: #222;
+}
 
-    header {
-      background: #12345a;
-      color: white;
-      text-align: center;
-      padding: 30px 15px;
-    }
+header {
+  background: #15375b;
+  color: white;
+  text-align: center;
+  padding: 35px 15px;
+}
 
-    main {
-      max-width: 500px;
-      margin: auto;
-      padding: 20px;
-    }
+header h1 {
+  font-size: 30px;
+  margin: 10px 0;
+}
 
-    .card {
-      background: white;
-      padding: 22px;
-      margin-bottom: 18px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px #0002;
-    }
+header p {
+  font-size: 16px;
+}
 
-    button {
-      background: #167447;
-      color: white;
-      border: none;
-      padding: 14px;
-      border-radius: 8px;
-      width: 100%;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
+.container {
+  max-width: 650px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 22px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px #00000012;
+}
+
+h2 {
+  color: #15375b;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 9px;
+  background: #19764d;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #125b3a;
+}
+
+input, select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  margin: 9px 0 17px;
+  background: white;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+.voltar {
+  background: #15375b;
+}
+
+.vaga {
+  border: 1px solid #ddd;
+  padding: 17px;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+.vaga h3 {
+  color: #15375b;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #777;
+  font-size: 13px;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>BUSCA EMPREGA</h1>
-    <p>Soluções para quem procura e oferece emprego</p>
-  </header>
+<header>
+  <h1>BUSCA EMPREGA</h1>
+  <p>Soluções para quem procura e oferece emprego</p>
+</header>
 
-  <main>
+<main class="container">
+
+  <!-- TELA INICIAL -->
+  <section id="inicio">
 
     <div class="card">
       <h2>Estou procurando emprego</h2>
       <p>Encontre oportunidades de trabalho na sua região.</p>
-      <button>Buscar emprego</button>
+      <button onclick="abrirBusca()">
+        Buscar emprego
+      </button>
     </div>
 
     <div class="card">
       <h2>Sou empresa</h2>
       <p>Encontre profissionais para sua empresa.</p>
-      <button>Oferecer emprego</button>
+      <button onclick="alert('Cadastro de empresas será desenvolvido na próxima etapa.')">
+        Oferecer emprego
+      </button>
     </div>
 
     <div class="card">
       <h2>Currículos</h2>
       <p>Cadastre seu currículo e encontre oportunidades.</p>
-      <button>Cadastrar currículo</button>
+      <button onclick="alert('Cadastro de currículos será desenvolvido na próxima etapa.')">
+        Cadastrar currículo
+      </button>
     </div>
 
-  </main>
+  </section>
+
+  <!-- TELA DE BUSCA -->
+  <section id="busca" class="hidden">
+
+    <div class="card">
+
+      <button class="voltar" onclick="voltarInicio()">
+        ← Voltar
+      </button>
+
+      <h2>Encontre seu emprego</h2>
+      <p>Procure oportunidades na sua região.</p>
+
+      <form id="formBusca">
+
+        <label for="profissao">
+          Qual profissão você procura?
+        </label>
+
+        <input
+          id="profissao"
+          type="text"
+          placeholder="Ex.: motorista, vendedor..."
+        >
+
+        <label for="localidade">
+          Onde deseja trabalhar?
+        </label>
+
+        <select id="localidade" onchange="mostrarCidade()">
+          <option value="regiao">Toda a região</option>
+          <option value="cidade">Somente na minha cidade</option>
+        </select>
+
+        <div id="campoCidade" class="hidden">
+
+          <label for="cidade">Escolha sua cidade:</label>
+
+          <select id="cidade">
+            <option>Itiquira - MT</option>
+            <option>Rondonópolis - MT</option>
+            <option>Pedra Preta - MT</option>
+            <option>Alto Garças - MT</option>
+            <option>Guiratinga - MT</option>
+          </select>
+
+        </div>
+
+        <label for="tipo">
+          Tipo de trabalho
+        </label>
+
+        <select id="tipo">
+          <option value="todos">Todos os tipos</option>
+          <option value="integral">Período integral</option>
+          <option value="meio">Meio período</option>
+          <option value="temporario">Temporário</option>
+        </select>
+
+        <button type="submit">
+          BUSCAR VAGAS
+        </button>
+
+      </form>
+
+    </div>
+
+    <div class="card">
+
+      <h2>Vagas disponíveis</h2>
+
+      <div id="resultados">
+        <p>
+          Ainda não existem vagas cadastradas.
+          Assim que as empresas publicarem oportunidades,
+          elas aparecerão aqui.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  Busca Emprega Soluções © 2026
+  <br>
+  Conectando pessoas a oportunidades.
+</footer>
+
+<script>
+
+function abrirBusca() {
+  document.getElementById("inicio").classList.add("hidden");
+  document.getElementById("busca").classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+
+function voltarInicio() {
+  document.getElementById("busca").classList.add("hidden");
+  document.getElementById("inicio").classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+
+function mostrarCidade() {
+  const localidade =
+    document.getElementById("localidade").value;
+
+  document.getElementById("campoCidade")
+    .classList.toggle("hidden", localidade !== "cidade");
+}
+
+document.getElementById("formBusca")
+  .addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    alert(
+      "Filtros selecionados! A busca por vagas reais será ativada quando conectarmos o cadastro das empresas."
+    );
+
+  });
+
+</script>
 
 </body>
 </html>
