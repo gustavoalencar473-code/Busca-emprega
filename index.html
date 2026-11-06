@@ -23,7 +23,7 @@ header {
   background: #15375b;
   color: white;
   text-align: center;
-  padding: 35px 15px;
+  padding: 30px 15px;
 }
 
 header h1 {
@@ -95,17 +95,6 @@ label {
   background: #15375b;
 }
 
-.vaga {
-  border: 1px solid #ddd;
-  padding: 17px;
-  border-radius: 12px;
-  margin-top: 15px;
-}
-
-.vaga h3 {
-  color: #15375b;
-}
-
 .aviso {
   background: #eaf2fa;
   padding: 14px;
@@ -121,6 +110,17 @@ label {
   border-radius: 10px;
   line-height: 1.5;
   margin-top: 15px;
+}
+
+.vaga {
+  border: 1px solid #ddd;
+  padding: 17px;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+.vaga h3 {
+  color: #15375b;
 }
 
 footer {
@@ -141,262 +141,266 @@ footer {
 
 <main class="container">
 
-  <!-- TELA INICIAL -->
+<!-- TELA INICIAL -->
 
-  <section id="inicio">
+<section id="inicio">
 
-    <div class="card">
-      <h2>Estou procurando emprego</h2>
-      <p>Encontre oportunidades de trabalho na sua região.</p>
-      <button onclick="abrirBusca()">Buscar emprego</button>
-    </div>
+  <div class="card">
+    <h2>Estou procurando emprego</h2>
+    <p>Encontre oportunidades de trabalho na sua região.</p>
+    <button onclick="abrirPagina('busca')">
+      Buscar emprego
+    </button>
+  </div>
 
-    <div class="card">
-      <h2>Sou empresa</h2>
-      <p>Encontre profissionais para sua empresa.</p>
-      <button onclick="abrirEmpresa()">Oferecer emprego</button>
-    </div>
+  <div class="card">
+    <h2>Sou empresa</h2>
+    <p>Encontre profissionais para sua empresa.</p>
+    <button onclick="abrirPagina('empresa')">
+      Oferecer emprego
+    </button>
+  </div>
 
-    
-<div class="card">
-  <h2>Currículos</h2>
-  <p>Cadastre seu currículo e encontre oportunidades.</p>
+  <div class="card">
+    <h2>Currículos</h2>
+    <p>Cadastre seu currículo e encontre oportunidades.</p>
+    <button onclick="abrirPagina('curriculos')">
+      Cadastrar currículo
+    </button>
+  </div>
 
-  <button onclick="abrirCurriculos()">
-    Cadastrar currículo
-  </button>
-</div>
+</section>
 
-  </section>
+<!-- PÁGINA BUSCAR EMPREGO -->
 
-  <!-- TELA DE BUSCA -->
+<section id="busca" class="hidden">
 
-  <section id="busca" class="hidden">
+  <div class="card">
 
-    <div class="card">
+    <button class="voltar" onclick="voltarInicio()">
+      ← Voltar
+    </button>
 
-      <button class="voltar" onclick="voltarInicio()">← Voltar</button>
+    <h2>Encontre seu emprego</h2>
+    <p>Procure oportunidades na sua região.</p>
 
-      <h2>Encontre seu emprego</h2>
-      <p>Procure oportunidades na sua região.</p>
+    <form id="formBusca">
 
-      <form id="formBusca">
+      <label for="profissao">Qual profissão você procura?</label>
+      <input id="profissao" type="text"
+        placeholder="Ex.: motorista, vendedor...">
 
-        <label for="profissao">Qual profissão você procura?</label>
-        <input id="profissao" type="text"
-          placeholder="Ex.: motorista, vendedor...">
+      <label for="localidade">Onde deseja trabalhar?</label>
 
-        <label for="localidade">Onde deseja trabalhar?</label>
+      <select id="localidade" onchange="mostrarCidade()">
+        <option value="regiao">Toda a região</option>
+        <option value="cidade">Somente na minha cidade</option>
+      </select>
 
-        <select id="localidade" onchange="mostrarCidade()">
-          <option value="regiao">Toda a região</option>
-          <option value="cidade">Somente na minha cidade</option>
-        </select>
-
-        <div id="campoCidade" class="hidden">
-          <label for="cidade">Escolha sua cidade:</label>
-          <select id="cidade">
-            <option>Itiquira - MT</option>
-            <option>Rondonópolis - MT</option>
-            <option>Pedra Preta - MT</option>
-            <option>Alto Garças - MT</option>
-            <option>Guiratinga - MT</option>
-          </select>
-        </div>
-
-        <label for="tipo">Tipo de trabalho</label>
-        <select id="tipo">
-          <option value="todos">Todos os tipos</option>
-          <option value="integral">Período integral</option>
-          <option value="meio">Meio período</option>
-          <option value="temporario">Temporário</option>
-        </select>
-
-        <button type="submit">BUSCAR VAGAS</button>
-
-      </form>
-    </div>
-
-    <div class="card">
-      <h2>Vagas disponíveis</h2>
-      <div id="resultados">
-        <p id="semVagas">
-          Ainda não temos vagas cadastradas. Volte em breve!
-        </p>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- TELA DE EMPRESA -->
-
-  <section id="empresa" class="hidden">
-
-    <div class="card">
-
-      <button class="voltar" onclick="voltarInicio()">← Voltar</button>
-
-      <h2>Oferecer emprego</h2>
-
-      <p>
-        Cadastre sua empresa e informe a oportunidade
-        de trabalho disponível.
-      </p>
-
-      <div class="aviso">
-        Preencha os dados corretamente.
-        As informações da empresa serão utilizadas
-        para identificação e verificação do cadastro.
-      </div>
-
-      <form id="formEmpresa">
-
-        <h2>1. Dados da empresa</h2>
-
-        <label for="nomeEmpresa">Nome da empresa</label>
-        <input id="nomeEmpresa" type="text"
-          placeholder="Nome da empresa" required>
-
-        <label for="cnpj">CNPJ</label>
-        <input id="cnpj" type="text"
-          placeholder="00.000.000/0000-00" required>
-
-        <label for="responsavel">Nome do responsável</label>
-        <input id="responsavel" type="text"
-          placeholder="Nome completo" required>
-
-        <label for="telefoneEmpresa">Telefone ou WhatsApp</label>
-        <input id="telefoneEmpresa" type="tel"
-          placeholder="(00) 00000-0000" required>
-
-        <h2>2. Informações da vaga</h2>
-
-        <label for="cargo">Nome do cargo</label>
-        <input id="cargo" type="text"
-          placeholder="Ex.: Motorista, vendedor..." required>
-
-        <label for="quantidade">Quantidade de vagas</label>
-        <input id="quantidade" type="number"
-          min="1" placeholder="Ex.: 2" required>
-
-        <label for="salario">Salário oferecido</label>
-        <input id="salario" type="text"
-          placeholder="Ex.: R$ 2.500,00" required>
-
-        <label for="tipoVaga">Tipo de trabalho</label>
-        <select id="tipoVaga" required>
-          <option value="">Selecione</option>
-          <option>Carteira assinada</option>
-          <option>Período integral</option>
-          <option>Meio período</option>
-          <option>Temporário</option>
-          <option>Estágio</option>
-          <option>Autônomo</option>
-        </select>
-
-        <label for="horario">Horário de trabalho</label>
-        <input id="horario" type="text"
-          placeholder="Ex.: 07h às 17h" required>
-
-        <label for="idade">Idade exigida (se houver)</label>
-        <input id="idade" type="text"
-          placeholder="Ex.: 18 anos ou mais">
-
-        <label for="requisitos">Requisitos e especificações</label>
-        <textarea id="requisitos"
-          placeholder="Descreva as exigências e qualificações necessárias..."
-          required></textarea>
-
-        <h2>3. Localização da vaga</h2>
-
-        <label for="cidadeEmpresa">Cidade</label>
-        <select id="cidadeEmpresa" required>
-          <option value="">Selecione a cidade</option>
+      <div id="campoCidade" class="hidden">
+        <label for="cidade">Escolha sua cidade:</label>
+        <select id="cidade">
           <option>Itiquira - MT</option>
           <option>Rondonópolis - MT</option>
           <option>Pedra Preta - MT</option>
           <option>Alto Garças - MT</option>
           <option>Guiratinga - MT</option>
-          <option>Outra cidade</option>
         </select>
+      </div>
 
-        <label for="endereco">Endereço completo da vaga</label>
-        <textarea id="endereco"
-          placeholder="Rua, número, bairro e ponto de referência..."
-          required></textarea>
+      <label for="tipo">Tipo de trabalho</label>
+      <select id="tipo">
+        <option value="todos">Todos os tipos</option>
+        <option value="integral">Período integral</option>
+        <option value="meio">Meio período</option>
+        <option value="temporario">Temporário</option>
+      </select>
 
-        <label for="descricao">Descrição adicional da oportunidade</label>
-        <textarea id="descricao"
-          placeholder="Outras informações importantes sobre a vaga..."></textarea>
+      <button type="submit">BUSCAR VAGAS</button>
 
-        <div class="aviso">
-          O cadastro ainda é demonstrativo.
-          A verificação do CNPJ, o pagamento e a
-          publicação definitiva serão implementados
-          nas próximas etapas.
-        </div>
+    </form>
 
-        <button type="submit">CADASTRAR OPORTUNIDADE</button>
+  </div>
 
-      </form>
+  <div class="card">
+    <h2>Vagas disponíveis</h2>
+    <div id="resultados">
+      <p id="semVagas">
+        Ainda não temos vagas cadastradas. Volte em breve!
+      </p>
+    </div>
+  </div>
 
-      <div id="confirmacao" class="hidden"></div>
+</section>
 
+<!-- PÁGINA OFERECER EMPREGO -->
+
+<section id="empresa" class="hidden">
+
+  <div class="card">
+
+    <button class="voltar" onclick="voltarInicio()">
+      ← Voltar
+    </button>
+
+    <h2>Oferecer emprego</h2>
+
+    <p>Cadastre sua empresa e informe a oportunidade disponível.</p>
+
+    <div class="aviso">
+      Preencha os dados corretamente. As informações serão
+      utilizadas para identificação e verificação do cadastro.
     </div>
 
-  </section>
+    <form id="formEmpresa">
 
-  <!-- TELA DE CURRÍCULOS -->
+      <h2>1. Dados da empresa</h2>
 
-  <section id="areaCurriculos" class="hidden">
+      <label for="nomeEmpresa">Nome da empresa</label>
+      <input id="nomeEmpresa" type="text"
+        placeholder="Nome da empresa" required>
 
-    <div class="card">
+      <label for="cnpj">CNPJ</label>
+      <input id="cnpj" type="text"
+        placeholder="00.000.000/0000-00" required>
 
-      <button class="voltar" onclick="voltarInicio()">← Voltar</button>
+      <label for="responsavel">Nome do responsável</label>
+      <input id="responsavel" type="text"
+        placeholder="Nome completo" required>
 
-      <h2>📄 Cadastro de Currículos</h2>
+      <label for="telefoneEmpresa">Telefone ou WhatsApp</label>
+      <input id="telefoneEmpresa" type="tel"
+        placeholder="(00) 00000-0000" required>
 
-      <p>Cadastre seu currículo e encontre uma oportunidade!</p>
+      <h2>2. Informações da vaga</h2>
 
-      <form id="formCurriculo">
+      <label for="cargo">Nome do cargo</label>
+      <input id="cargo" type="text"
+        placeholder="Ex.: Motorista, vendedor..." required>
 
-        <label for="nomeCandidato">Nome completo</label>
-        <input type="text" id="nomeCandidato"
-          placeholder="Nome completo" required>
+      <label for="quantidade">Quantidade de vagas</label>
+      <input id="quantidade" type="number"
+        min="1" placeholder="Ex.: 2" required>
 
-        <label for="telefoneCandidato">WhatsApp</label>
-        <input type="tel" id="telefoneCandidato"
-          placeholder="WhatsApp" required>
+      <label for="salario">Salário oferecido</label>
+      <input id="salario" type="text"
+        placeholder="Ex.: R$ 2.500,00" required>
 
-        <label for="cidadeCandidato">Cidade onde mora</label>
-        <input type="text" id="cidadeCandidato"
-          placeholder="Cidade onde mora" required>
+      <label for="tipoVaga">Tipo de trabalho</label>
+      <select id="tipoVaga" required>
+        <option value="">Selecione</option>
+        <option>Carteira assinada</option>
+        <option>Período integral</option>
+        <option>Meio período</option>
+        <option>Temporário</option>
+        <option>Estágio</option>
+        <option>Autônomo</option>
+      </select>
 
-        <label for="profissaoCandidato">Profissão que procura</label>
-        <input type="text" id="profissaoCandidato"
-          placeholder="Profissão que procura" required>
+      <label for="horario">Horário de trabalho</label>
+      <input id="horario" type="text"
+        placeholder="Ex.: 07h às 17h" required>
 
-        <label for="experienciaCandidato">Experiência profissional</label>
-        <textarea id="experienciaCandidato"
-          placeholder="Experiência profissional"></textarea>
+      <label for="idade">Idade exigida (se houver)</label>
+      <input id="idade" type="text"
+        placeholder="Ex.: 18 anos ou mais">
 
-        <label for="escolaridadeCandidato">Escolaridade</label>
-        <input type="text" id="escolaridadeCandidato"
-          placeholder="Escolaridade">
+      <label for="requisitos">Requisitos e especificações</label>
+      <textarea id="requisitos"
+        placeholder="Descreva as exigências e qualificações..."
+        required></textarea>
 
-        <label for="habilidadesCandidato">Suas habilidades</label>
-        <textarea id="habilidadesCandidato"
-          placeholder="Suas habilidades"></textarea>
+      <h2>3. Localização da vaga</h2>
 
-        <button type="submit">CADASTRAR CURRÍCULO</button>
+      <label for="cidadeEmpresa">Cidade</label>
+      <select id="cidadeEmpresa" required>
+        <option value="">Selecione a cidade</option>
+        <option>Itiquira - MT</option>
+        <option>Rondonópolis - MT</option>
+        <option>Pedra Preta - MT</option>
+        <option>Alto Garças - MT</option>
+        <option>Guiratinga - MT</option>
+        <option>Outra cidade</option>
+      </select>
 
-      </form>
+      <label for="endereco">Endereço completo da vaga</label>
+      <textarea id="endereco"
+        placeholder="Rua, número, bairro e ponto de referência..."
+        required></textarea>
 
-      <div id="listaCurriculos"></div>
+      <label for="descricao">Descrição adicional</label>
+      <textarea id="descricao"
+        placeholder="Outras informações importantes..."></textarea>
 
-    </div>
+      <div class="aviso">
+        Cadastro demonstrativo. A verificação do CNPJ,
+        pagamento e publicação definitiva serão implementados
+        nas próximas etapas.
+      </div>
 
-  </section>
+      <button type="submit">CADASTRAR OPORTUNIDADE</button>
+
+    </form>
+
+    <div id="confirmacao" class="hidden"></div>
+
+  </div>
+
+</section>
+
+<!-- PÁGINA DE CURRÍCULOS -->
+
+<section id="curriculos" class="hidden">
+
+  <div class="card">
+
+    <button class="voltar" onclick="voltarInicio()">
+      ← Voltar
+    </button>
+
+    <h2>📄 Cadastro de Currículos</h2>
+
+    <p>Cadastre seu currículo e encontre uma oportunidade!</p>
+
+    <form id="formCurriculo">
+
+      <label for="nomeCandidato">Nome completo</label>
+      <input type="text" id="nomeCandidato"
+        placeholder="Nome completo" required>
+
+      <label for="telefoneCandidato">WhatsApp</label>
+      <input type="tel" id="telefoneCandidato"
+        placeholder="WhatsApp" required>
+
+      <label for="cidadeCandidato">Cidade onde mora</label>
+      <input type="text" id="cidadeCandidato"
+        placeholder="Cidade onde mora" required>
+
+      <label for="profissaoCandidato">Profissão que procura</label>
+      <input type="text" id="profissaoCandidato"
+        placeholder="Profissão que procura" required>
+
+      <label for="experienciaCandidato">Experiência profissional</label>
+      <textarea id="experienciaCandidato"
+        placeholder="Experiência profissional"></textarea>
+
+      <label for="escolaridadeCandidato">Escolaridade</label>
+      <input type="text" id="escolaridadeCandidato"
+        placeholder="Escolaridade">
+
+      <label for="habilidadesCandidato">Suas habilidades</label>
+      <textarea id="habilidadesCandidato"
+        placeholder="Suas habilidades"></textarea>
+
+      <button type="submit">CADASTRAR CURRÍCULO</button>
+
+    </form>
+
+    <div id="listaCurriculos"></div>
+
+  </div>
+
+</section>
 
 </main>
 
@@ -408,54 +412,34 @@ footer {
 
 <script>
 
-// FUNÇÃO PARA ESCONDER TODAS AS TELAS
+// NAVEGAÇÃO ENTRE AS PÁGINAS
 
-function esconderTelas() {
+function abrirPagina(pagina) {
+
   document.getElementById("inicio").classList.add("hidden");
   document.getElementById("busca").classList.add("hidden");
   document.getElementById("empresa").classList.add("hidden");
-  document.getElementById("areaCurriculos").classList.add("hidden");
-}
+  document.getElementById("curriculos").classList.add("hidden");
 
-// ABRIR TELAS
+  document.getElementById(pagina).classList.remove("hidden");
 
-function abrirBusca() {
-  esconderTelas();
-  document.getElementById("busca").classList.remove("hidden");
-  window.scrollTo(0, 0);
-}
-
-function abrirEmpresa() {
-  esconderTelas();
-  document.getElementById("empresa").classList.remove("hidden");
-  window.scrollTo(0, 0);
-}
-
-function abrirCurriculos() {
-  esconderTelas();
-  document.getElementById("areaCurriculos").classList.remove("hidden");
-  window.scrollTo(0, 0);
-}
-function abrirCurriculos() {
-  esconderTelas();
-  document.getElementById("areaCurriculos").classList.remove("hidden");
   window.scrollTo(0, 0);
 }
 
 function voltarInicio() {
-  esconderTelas();
-  document.getElementById("inicio").classList.remove("hidden");
-  window.scrollTo(0, 0);
+  abrirPagina("inicio");
 }
 
 // ESCOLHA DE CIDADE
 
 function mostrarCidade() {
+
   const localidade =
     document.getElementById("localidade").value;
 
   document.getElementById("campoCidade")
     .classList.toggle("hidden", localidade !== "cidade");
+
 }
 
 // BUSCA DE VAGAS
@@ -466,10 +450,28 @@ document.getElementById("formBusca")
     event.preventDefault();
 
     alert(
-      "Filtros selecionados! A busca por vagas reais será ativada quando conectarmos o cadastro das empresas."
+      "Filtros selecionados! A busca por vagas reais será ativada quando conectarmos o sistema."
     );
 
   });
+
+// PROTEÇÃO DOS DADOS
+
+function escapar(valor) {
+
+  return String(valor).replace(/[&<>"']/g, function(caractere) {
+
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    }[caractere];
+
+  });
+
+}
 
 // CADASTRO DEMONSTRATIVO DE EMPRESA
 
@@ -498,20 +500,6 @@ document.getElementById("formEmpresa")
 
   });
 
-// PROTEÇÃO DOS DADOS EXIBIDOS
-
-function escapar(valor) {
-  return String(valor).replace(/[&<>"']/g, function(caractere) {
-    return {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#039;"
-    }[caractere];
-  });
-}
-
 // CADASTRO DE CURRÍCULOS
 
 document.getElementById("formCurriculo")
@@ -530,6 +518,7 @@ document.getElementById("formCurriculo")
     const lista = document.getElementById("listaCurriculos");
 
     const curriculo = document.createElement("div");
+
     curriculo.className = "vaga";
 
     curriculo.innerHTML =
