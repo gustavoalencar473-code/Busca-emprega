@@ -556,6 +556,41 @@ function escapar(valor) {
   });
 }
 
+
+document.getElementById("formCurriculo")
+  .addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const nome = document.getElementById("nomeCandidato").value;
+    const telefone = document.getElementById("telefoneCandidato").value;
+    const cidade = document.getElementById("cidadeCandidato").value;
+    const profissao = document.getElementById("profissaoCandidato").value;
+    const experiencia = document.getElementById("experienciaCandidato").value;
+    const escolaridade = document.getElementById("escolaridadeCandidato").value;
+    const habilidades = document.getElementById("habilidadesCandidato").value;
+
+    const lista = document.getElementById("listaCurriculos");
+
+    const curriculo = document.createElement("div");
+    curriculo.className = "card";
+
+    curriculo.innerHTML =
+      "<h3>" + escapar(nome) + "</h3>" +
+      "<p><strong>WhatsApp:</strong> " + escapar(telefone) + "</p>" +
+      "<p><strong>Cidade:</strong> " + escapar(cidade) + "</p>" +
+      "<p><strong>Profissão:</strong> " + escapar(profissao) + "</p>" +
+      "<p><strong>Experiência:</strong> " + escapar(experiencia) + "</p>" +
+      "<p><strong>Escolaridade:</strong> " + escapar(escolaridade) + "</p>" +
+      "<p><strong>Habilidades:</strong> " + escapar(habilidades) + "</p>";
+
+    lista.appendChild(curriculo);
+
+    this.reset();
+
+    alert("Currículo cadastrado nesta página com sucesso!");
+  });
+
 </script>
 
 <!-- ÁREA DE CURRÍCULOS -->
