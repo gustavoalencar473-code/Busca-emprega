@@ -6,11 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Busca Emprega Soluções</title>
-
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -26,10 +23,7 @@ header {
   padding: 30px 15px;
 }
 
-header h1 {
-  font-size: 30px;
-  margin: 10px 0;
-}
+header h1 { font-size: 30px; margin: 10px 0; }
 
 .container {
   max-width: 650px;
@@ -45,9 +39,7 @@ header h1 {
   box-shadow: 0 3px 12px #00000012;
 }
 
-h2 {
-  color: #15375b;
-}
+h2 { color: #15375b; }
 
 button {
   width: 100%;
@@ -61,9 +53,7 @@ button {
   margin-top: 10px;
 }
 
-button:hover {
-  background: #125b3a;
-}
+button:hover { background: #125b3a; }
 
 input, select, textarea {
   width: 100%;
@@ -76,10 +66,7 @@ input, select, textarea {
   font-family: Arial, sans-serif;
 }
 
-textarea {
-  min-height: 100px;
-  resize: vertical;
-}
+textarea { min-height: 100px; resize: vertical; }
 
 label {
   font-weight: bold;
@@ -87,13 +74,8 @@ label {
   margin-top: 12px;
 }
 
-.hidden {
-  display: none !important;
-}
-
-.voltar {
-  background: #15375b;
-}
+.hidden { display: none !important; }
+.voltar { background: #15375b; }
 
 .aviso {
   background: #eaf2fa;
@@ -119,9 +101,7 @@ label {
   margin-top: 15px;
 }
 
-.vaga h3 {
-  color: #15375b;
-}
+.vaga h3 { color: #15375b; }
 
 footer {
   text-align: center;
@@ -142,56 +122,38 @@ footer {
 <main class="container">
 
 <!-- TELA INICIAL -->
-
 <section id="inicio">
-
   <div class="card">
     <h2>Estou procurando emprego</h2>
     <p>Encontre oportunidades de trabalho na sua região.</p>
-    <button onclick="abrirPagina('busca')">
-      Buscar emprego
-    </button>
+    <button onclick="abrirPagina('busca')">Buscar emprego</button>
   </div>
 
   <div class="card">
     <h2>Sou empresa</h2>
     <p>Encontre profissionais para sua empresa.</p>
-    <button onclick="abrirPagina('empresa')">
-      Oferecer emprego
-    </button>
+    <button onclick="abrirPagina('empresa')">Oferecer emprego</button>
   </div>
 
   <div class="card">
     <h2>Currículos</h2>
     <p>Cadastre seu currículo e encontre oportunidades.</p>
-    <button onclick="abrirPagina('curriculos')">
-      Cadastrar currículo
-    </button>
+    <button onclick="abrirPagina('curriculos')">Cadastrar currículo</button>
   </div>
-
 </section>
 
-<!-- PÁGINA BUSCAR EMPREGO -->
-
+<!-- BUSCAR EMPREGO -->
 <section id="busca" class="hidden">
-
   <div class="card">
-
-    <button class="voltar" onclick="voltarInicio()">
-      ← Voltar
-    </button>
-
+    <button class="voltar" onclick="voltarInicio()">← Voltar</button>
     <h2>Encontre seu emprego</h2>
     <p>Procure oportunidades na sua região.</p>
 
     <form id="formBusca">
-
       <label for="profissao">Qual profissão você procura?</label>
-      <input id="profissao" type="text"
-        placeholder="Ex.: motorista, vendedor...">
+      <input id="profissao" type="text" placeholder="Ex.: motorista, vendedor...">
 
       <label for="localidade">Onde deseja trabalhar?</label>
-
       <select id="localidade" onchange="mostrarCidade()">
         <option value="regiao">Toda a região</option>
         <option value="cidade">Somente na minha cidade</option>
@@ -217,74 +179,53 @@ footer {
       </select>
 
       <button type="submit">BUSCAR VAGAS</button>
-
     </form>
-
   </div>
 
   <div class="card">
     <h2>Vagas disponíveis</h2>
     <div id="resultados">
-      <p id="semVagas">
-        Ainda não temos vagas cadastradas. Volte em breve!
-      </p>
+      <p>Ainda não temos vagas cadastradas. Volte em breve!</p>
     </div>
   </div>
-
 </section>
 
-<!-- PÁGINA OFERECER EMPREGO -->
-
+<!-- OFERECER EMPREGO -->
 <section id="empresa" class="hidden">
-
   <div class="card">
-
-    <button class="voltar" onclick="voltarInicio()">
-      ← Voltar
-    </button>
-
+    <button class="voltar" onclick="voltarInicio()">← Voltar</button>
     <h2>Oferecer emprego</h2>
-
     <p>Cadastre sua empresa e informe a oportunidade disponível.</p>
 
     <div class="aviso">
-      Preencha os dados corretamente. As informações serão
-      utilizadas para identificação e verificação do cadastro.
+      A primeira publicação é gratuita. As próximas precisam de pagamento.
     </div>
 
     <form id="formEmpresa">
-
       <h2>1. Dados da empresa</h2>
 
       <label for="nomeEmpresa">Nome da empresa</label>
-      <input id="nomeEmpresa" type="text"
-        placeholder="Nome da empresa" required>
+      <input id="nomeEmpresa" type="text" placeholder="Nome da empresa" required>
 
       <label for="cnpj">CNPJ</label>
-      <input id="cnpj" type="text"
-        placeholder="00.000.000/0000-00" required>
+      <input id="cnpj" type="text" placeholder="00.000.000/0000-00" required>
 
       <label for="responsavel">Nome do responsável</label>
-      <input id="responsavel" type="text"
-        placeholder="Nome completo" required>
+      <input id="responsavel" type="text" placeholder="Nome completo" required>
 
       <label for="telefoneEmpresa">Telefone ou WhatsApp</label>
-      <input id="telefoneEmpresa" type="tel"
-        placeholder="(00) 00000-0000" required>
+      <input id="telefoneEmpresa" type="tel" placeholder="(00) 00000-0000" required>
 
       <h2>2. Informações da vaga</h2>
 
       <label for="cargo">Nome do cargo</label>
-      <input id="cargo" type="text"
-        placeholder="Ex.: Motorista, vendedor..." required>
+      <input id="cargo" type="text" placeholder="Ex.: Motorista, vendedor..." required>
 
       <label for="quantidade">Quantidade de vagas</label>
-      <input id="quantidade" type="number"
-        min="1" placeholder="Ex.: 2" required>
+      <input id="quantidade" type="number" min="1" placeholder="Ex.: 2" required>
 
       <label for="salario">Salário oferecido</label>
-      <input id="salario" type="text"
-        placeholder="Ex.: R$ 2.500,00" required>
+      <input id="salario" type="text" placeholder="Ex.: R$ 2.500,00" required>
 
       <label for="tipoVaga">Tipo de trabalho</label>
       <select id="tipoVaga" required>
@@ -298,17 +239,13 @@ footer {
       </select>
 
       <label for="horario">Horário de trabalho</label>
-      <input id="horario" type="text"
-        placeholder="Ex.: 07h às 17h" required>
+      <input id="horario" type="text" placeholder="Ex.: 07h às 17h" required>
 
       <label for="idade">Idade exigida (se houver)</label>
-      <input id="idade" type="text"
-        placeholder="Ex.: 18 anos ou mais">
+      <input id="idade" type="text" placeholder="Ex.: 18 anos ou mais">
 
       <label for="requisitos">Requisitos e especificações</label>
-      <textarea id="requisitos"
-        placeholder="Descreva as exigências e qualificações..."
-        required></textarea>
+      <textarea id="requisitos" placeholder="Descreva as exigências e qualificações..." required></textarea>
 
       <h2>3. Localização da vaga</h2>
 
@@ -324,82 +261,56 @@ footer {
       </select>
 
       <label for="endereco">Endereço completo da vaga</label>
-      <textarea id="endereco"
-        placeholder="Rua, número, bairro e ponto de referência..."
-        required></textarea>
+      <textarea id="endereco" placeholder="Rua, número, bairro e ponto de referência..." required></textarea>
 
       <label for="descricao">Descrição adicional</label>
-      <textarea id="descricao"
-        placeholder="Outras informações importantes..."></textarea>
+      <textarea id="descricao" placeholder="Outras informações importantes..."></textarea>
 
       <div class="aviso">
-        Cadastro demonstrativo. A verificação do CNPJ,
-        pagamento e publicação definitiva serão implementados
-        nas próximas etapas.
+        As vagas pagas ficarão pendentes até a confirmação real do pagamento por Pix ou cartão.
       </div>
 
       <button type="submit">CADASTRAR OPORTUNIDADE</button>
-
     </form>
 
     <div id="confirmacao" class="hidden"></div>
-
   </div>
-
 </section>
 
-<!-- PÁGINA DE CURRÍCULOS -->
-
+<!-- CURRÍCULOS -->
 <section id="curriculos" class="hidden">
-
   <div class="card">
-
-    <button class="voltar" onclick="voltarInicio()">
-      ← Voltar
-    </button>
-
+    <button class="voltar" onclick="voltarInicio()">← Voltar</button>
     <h2>📄 Cadastro de Currículos</h2>
-
     <p>Cadastre seu currículo e encontre uma oportunidade!</p>
 
     <form id="formCurriculo">
-
       <label for="nomeCandidato">Nome completo</label>
-      <input type="text" id="nomeCandidato"
-        placeholder="Nome completo" required>
+      <input type="text" id="nomeCandidato" placeholder="Nome completo" required>
 
       <label for="telefoneCandidato">WhatsApp</label>
-      <input type="tel" id="telefoneCandidato"
-        placeholder="WhatsApp" required>
+      <input type="tel" id="telefoneCandidato" placeholder="WhatsApp" required>
 
       <label for="cidadeCandidato">Cidade onde mora</label>
-      <input type="text" id="cidadeCandidato"
-        placeholder="Cidade onde mora" required>
+      <input type="text" id="cidadeCandidato" placeholder="Cidade onde mora" required>
 
       <label for="profissaoCandidato">Profissão que procura</label>
-      <input type="text" id="profissaoCandidato"
-        placeholder="Profissão que procura" required>
+      <input type="text" id="profissaoCandidato" placeholder="Profissão que procura" required>
 
       <label for="experienciaCandidato">Experiência profissional</label>
-      <textarea id="experienciaCandidato"
-        placeholder="Experiência profissional"></textarea>
+      <textarea id="experienciaCandidato" placeholder="Experiência profissional"></textarea>
 
       <label for="escolaridadeCandidato">Escolaridade</label>
-      <input type="text" id="escolaridadeCandidato"
-        placeholder="Escolaridade">
+      <input type="text" id="escolaridadeCandidato" placeholder="Escolaridade">
 
       <label for="habilidadesCandidato">Suas habilidades</label>
-      <textarea id="habilidadesCandidato"
-        placeholder="Suas habilidades"></textarea>
+      <textarea id="habilidadesCandidato" placeholder="Suas habilidades"></textarea>
 
       <button type="submit">CADASTRAR CURRÍCULO</button>
-
     </form>
 
     <div id="listaCurriculos"></div>
-
   </div>
-
 </section>
 
 </main>
@@ -411,17 +322,15 @@ footer {
 </footer>
 
 <script>
-
-// NAVEGAÇÃO ENTRE AS PÁGINAS
-
+// NAVEGAÇÃO
 function abrirPagina(pagina) {
-
-  document.getElementById("inicio").classList.add("hidden");
-  document.getElementById("busca").classList.add("hidden");
-  document.getElementById("empresa").classList.add("hidden");
-  document.getElementById("curriculos").classList.add("hidden");
+  ["inicio", "busca", "empresa", "curriculos"].forEach(function(id) {
+    document.getElementById(id).classList.add("hidden");
+  });
 
   document.getElementById(pagina).classList.remove("hidden");
+
+  if (pagina === "busca") mostrarVagas();
 
   window.scrollTo(0, 0);
 }
@@ -430,37 +339,16 @@ function voltarInicio() {
   abrirPagina("inicio");
 }
 
-// ESCOLHA DE CIDADE
-
+// CIDADE
 function mostrarCidade() {
-
-  const localidade =
-    document.getElementById("localidade").value;
-
+  const localidade = document.getElementById("localidade").value;
   document.getElementById("campoCidade")
     .classList.toggle("hidden", localidade !== "cidade");
-
 }
 
-// BUSCA DE VAGAS
-
-document.getElementById("formBusca")
-  .addEventListener("submit", function(event) {
-
-    event.preventDefault();
-
-    alert(
-      "Filtros selecionados! A busca por vagas reais será ativada quando conectarmos o sistema."
-    );
-
-  });
-
-// PROTEÇÃO DOS DADOS
-
+// PROTEÇÃO DE TEXTO
 function escapar(valor) {
-
   return String(valor).replace(/[&<>"']/g, function(caractere) {
-
     return {
       "&": "&amp;",
       "<": "&lt;",
@@ -468,79 +356,202 @@ function escapar(valor) {
       '"': "&quot;",
       "'": "&#039;"
     }[caractere];
-
   });
-
 }
 
+// CHAVES DE ARMAZENAMENTO
+function chavePublicadas(cnpj) {
+  return "buscaEmprega_publicadas_" + cnpj;
+}
 
+function chavePendentes(cnpj) {
+  return "buscaEmprega_pendentes_" + cnpj;
+}
 
-// CONTROLE DE PUBLICAÇÃO DE VAGAS
+function chaveGratis(cnpj) {
+  return "buscaEmprega_gratis_" + cnpj;
+}
+
+// RECUPERAR VAGAS PUBLICADAS
+function obterVagasPublicadas() {
+  let todas = [];
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const chave = localStorage.key(i);
+
+    if (chave && chave.startsWith("buscaEmprega_publicadas_")) {
+      try {
+        const vagas = JSON.parse(localStorage.getItem(chave) || "[]");
+        if (Array.isArray(vagas)) todas = todas.concat(vagas);
+      } catch (erro) {
+        console.error("Erro ao ler vagas:", erro);
+      }
+    }
+  }
+
+  return todas;
+}
+
+// MOSTRAR VAGAS
+function mostrarVagas(lista = null) {
+  const resultados = document.getElementById("resultados");
+  const vagas = lista === null ? obterVagasPublicadas() : lista;
+
+  if (vagas.length === 0) {
+    resultados.innerHTML =
+      "<p>Ainda não temos vagas cadastradas. Volte em breve!</p>";
+    return;
+  }
+
+  resultados.innerHTML = "";
+
+  vagas.forEach(function(vaga) {
+    const cartao = document.createElement("div");
+    cartao.className = "vaga";
+
+    cartao.innerHTML =
+      "<h3>" + escapar(vaga.cargo) + "</h3>" +
+      "<p><strong>Empresa:</strong> " + escapar(vaga.empresa) + "</p>" +
+      "<p><strong>Cidade:</strong> " + escapar(vaga.cidade) + "</p>" +
+      "<p><strong>Salário:</strong> " + escapar(vaga.salario) + "</p>" +
+      "<p><strong>Tipo:</strong> " + escapar(vaga.tipo) + "</p>" +
+      "<p><strong>Horário:</strong> " + escapar(vaga.horario) + "</p>" +
+      "<p><strong>Quantidade:</strong> " + escapar(vaga.quantidade) + "</p>" +
+      "<p><strong>Requisitos:</strong> " + escapar(vaga.requisitos) + "</p>" +
+      "<p>" + escapar(vaga.descricao) + "</p>";
+
+    resultados.appendChild(cartao);
+  });
+}
+
+// BUSCAR VAGAS
+document.getElementById("formBusca")
+  .addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const profissao = document.getElementById("profissao").value.trim().toLowerCase();
+    const localidade = document.getElementById("localidade").value;
+    const cidade = document.getElementById("cidade").value;
+    const tipo = document.getElementById("tipo").value;
+
+    let vagas = obterVagasPublicadas();
+
+    vagas = vagas.filter(function(vaga) {
+      const combinaProfissao =
+        !profissao || vaga.cargo.toLowerCase().includes(profissao);
+
+      const combinaCidade =
+        localidade !== "cidade" || vaga.cidade === cidade;
+
+      const tipoVaga = String(vaga.tipo).toLowerCase();
+
+      const combinaTipo =
+        tipo === "todos" ||
+        (tipo === "integral" &&
+          (tipoVaga.includes("integral") || tipoVaga.includes("carteira"))) ||
+        (tipo === "meio" && tipoVaga.includes("meio")) ||
+        (tipo === "temporario" && tipoVaga.includes("temporário"));
+
+      return combinaProfissao && combinaCidade && combinaTipo;
+    });
+
+    mostrarVagas(vagas);
+  });
+
+// CADASTRO E CONTROLE DE VAGAS
 document.getElementById("formEmpresa")
   .addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const nome = document.getElementById("nomeEmpresa").value.trim();
-    const cnpj = document.getElementById("cnpj").value.replace(/\D/g, "");
-    const cargo = document.getElementById("cargo").value.trim();
-    const cidade = document.getElementById("cidadeEmpresa").value;
     const confirmacao = document.getElementById("confirmacao");
+    const cnpj = document.getElementById("cnpj").value.replace(/\D/g, "");
 
     if (cnpj.length !== 14) {
       confirmacao.className = "aviso";
-      confirmacao.textContent =
-        "Informe um CNPJ válido com 14 números.";
+      confirmacao.textContent = "Informe um CNPJ com 14 números.";
       return;
     }
 
-    // Cada empresa tem seu próprio controle
-    const chave = "buscaEmprega_vagas_" + cnpj;
+    const vaga = {
+      empresa: document.getElementById("nomeEmpresa").value.trim(),
+      cnpj: cnpj,
+      responsavel: document.getElementById("responsavel").value.trim(),
+      telefone: document.getElementById("telefoneEmpresa").value.trim(),
+      cargo: document.getElementById("cargo").value.trim(),
+      quantidade: document.getElementById("quantidade").value,
+      salario: document.getElementById("salario").value.trim(),
+      tipo: document.getElementById("tipoVaga").value,
+      horario: document.getElementById("horario").value.trim(),
+      idade: document.getElementById("idade").value.trim(),
+      requisitos: document.getElementById("requisitos").value.trim(),
+      cidade: document.getElementById("cidadeEmpresa").value,
+      endereco: document.getElementById("endereco").value.trim(),
+      descricao: document.getElementById("descricao").value.trim(),
+      data: new Date().toISOString()
+    };
 
-    let quantidadePublicada = Number(
-      localStorage.getItem(chave) || 0
-    );
+    const gratisUsada =
+      localStorage.getItem(chaveGratis(cnpj)) === "sim";
 
-    // A partir da segunda publicação, exige pagamento
-    if (quantidadePublicada >= 1) {
-      confirmacao.className = "aviso";
+    if (!gratisUsada) {
+      const publicadas = JSON.parse(
+        localStorage.getItem(chavePublicadas(cnpj)) || "[]"
+      );
 
+      vaga.status = "publicada";
+      vaga.pagamento = "gratuito";
+      publicadas.push(vaga);
+
+      localStorage.setItem(
+        chavePublicadas(cnpj),
+        JSON.stringify(publicadas)
+      );
+
+      localStorage.setItem(chaveGratis(cnpj), "sim");
+
+      confirmacao.className = "sucesso";
       confirmacao.innerHTML =
-        "<h3>Pagamento necessário</h3>" +
-        "<p>Empresa: " + escapar(nome) + "</p>" +
-        "<p>Sua primeira publicação gratuita já foi utilizada.</p>" +
-        "<p>A partir de agora, é necessário pagar para publicar novas vagas.</p>" +
-        "<p>Em breve: pagamento por Pix e cartão.</p>" +
-        "<p>A publicação está bloqueada até a confirmação do pagamento.</p>";
+        "<h3>Primeira vaga gratuita!</h3>" +
+        "<p>Empresa: " + escapar(vaga.empresa) + "</p>" +
+        "<p>Vaga: " + escapar(vaga.cargo) + "</p>" +
+        "<p>Cidade: " + escapar(vaga.cidade) + "</p>" +
+        "<p><strong>Valor: GRÁTIS</strong></p>" +
+        "<p>A vaga foi registrada no protótipo e aparecerá na busca deste navegador.</p>";
 
-      window.scrollTo(0, document.body.scrollHeight);
-      return;
+      this.reset();
+
+    } else {
+      const pendentes = JSON.parse(
+        localStorage.getItem(chavePendentes(cnpj)) || "[]"
+      );
+
+      vaga.status = "aguardando_pagamento";
+      vaga.pagamento = "pendente";
+      pendentes.push(vaga);
+
+      localStorage.setItem(
+        chavePendentes(cnpj),
+        JSON.stringify(pendentes)
+      );
+
+      confirmacao.className = "aviso";
+      confirmacao.innerHTML =
+        "<h3>Vaga preparada com sucesso!</h3>" +
+        "<p>Empresa: " + escapar(vaga.empresa) + "</p>" +
+        "<p>Vaga: " + escapar(vaga.cargo) + "</p>" +
+        "<p><strong>Status: AGUARDANDO PAGAMENTO</strong></p>" +
+        "<p>A vaga foi guardada, mas ainda não está publicada.</p>" +
+        "<p>Pix e cartão serão integrados em uma próxima etapa.</p>";
+
+      this.reset();
     }
 
-    // Primeira publicação gratuita
-    localStorage.setItem(chave, "1");
-
-    confirmacao.className = "sucesso";
-
-    confirmacao.innerHTML =
-      "<h3>Primeira publicação gratuita!</h3>" +
-      "<p>Empresa: " + escapar(nome) + "</p>" +
-      "<p>Vaga: " + escapar(cargo) + "</p>" +
-      "<p>Cidade: " + escapar(cidade) + "</p>" +
-      "<p><strong>Valor: GRÁTIS</strong></p>" +
-      "<p>Você utilizou sua primeira publicação gratuita.</p>" +
-      "<p>As próximas publicações precisarão de pagamento.</p>" +
-      "<p>Esta é uma demonstração local. A vaga ainda não foi publicada para outros usuários.</p>";
-
-    this.reset();
     window.scrollTo(0, document.body.scrollHeight);
   });
 
-
 // CADASTRO DE CURRÍCULOS
-
 document.getElementById("formCurriculo")
   .addEventListener("submit", function(event) {
-
     event.preventDefault();
 
     const nome = document.getElementById("nomeCandidato").value;
@@ -552,7 +563,6 @@ document.getElementById("formCurriculo")
     const habilidades = document.getElementById("habilidadesCandidato").value;
 
     const lista = document.getElementById("listaCurriculos");
-
     const curriculo = document.createElement("div");
 
     curriculo.className = "vaga";
@@ -567,14 +577,11 @@ document.getElementById("formCurriculo")
       "<p><strong>Habilidades:</strong> " + escapar(habilidades) + "</p>";
 
     lista.appendChild(curriculo);
-
     this.reset();
 
     alert("Currículo cadastrado nesta página com sucesso!");
-
   });
 
 </script>
-
 </body>
 </html>
