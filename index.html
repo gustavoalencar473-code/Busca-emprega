@@ -31,10 +31,6 @@ header h1 {
   margin: 10px 0;
 }
 
-header p {
-  font-size: 16px;
-}
-
 .container {
   max-width: 650px;
   margin: auto;
@@ -152,30 +148,21 @@ footer {
     <div class="card">
       <h2>Estou procurando emprego</h2>
       <p>Encontre oportunidades de trabalho na sua região.</p>
-
-      <button onclick="abrirBusca()">
-        Buscar emprego
-      </button>
+      <button onclick="abrirBusca()">Buscar emprego</button>
     </div>
 
     <div class="card">
       <h2>Sou empresa</h2>
       <p>Encontre profissionais para sua empresa.</p>
-
-      <button onclick="abrirEmpresa()">
-        Oferecer emprego
-      </button>
+      <button onclick="abrirEmpresa()">Oferecer emprego</button>
     </div>
 
-  
-<div class="card">
-  <h2>Currículos</h2>
-  <p>Cadastre seu currículo e encontre oportunidades.</p>
+    <div class="card">
+      <h2>Currículos</h2>
+      <p>Cadastre seu currículo e encontre oportunidades.</p>
+      <button onclick="abrirCurriculos()">Cadastrar currículo</button>
+    </div>
 
-  <button onclick="document.getElementById('areaCurriculos').classList.toggle('hidden')">
-    Cadastrar currículo
-  </button>
-</div>
   </section>
 
   <!-- TELA DE BUSCA -->
@@ -184,28 +171,18 @@ footer {
 
     <div class="card">
 
-      <button class="voltar" onclick="voltarInicio()">
-        ← Voltar
-      </button>
+      <button class="voltar" onclick="voltarInicio()">← Voltar</button>
 
       <h2>Encontre seu emprego</h2>
       <p>Procure oportunidades na sua região.</p>
 
       <form id="formBusca">
 
-        <label for="profissao">
-          Qual profissão você procura?
-        </label>
+        <label for="profissao">Qual profissão você procura?</label>
+        <input id="profissao" type="text"
+          placeholder="Ex.: motorista, vendedor...">
 
-        <input
-          id="profissao"
-          type="text"
-          placeholder="Ex.: motorista, vendedor..."
-        >
-
-        <label for="localidade">
-          Onde deseja trabalhar?
-        </label>
+        <label for="localidade">Onde deseja trabalhar?</label>
 
         <select id="localidade" onchange="mostrarCidade()">
           <option value="regiao">Toda a região</option>
@@ -213,11 +190,7 @@ footer {
         </select>
 
         <div id="campoCidade" class="hidden">
-
-          <label for="cidade">
-            Escolha sua cidade:
-          </label>
-
+          <label for="cidade">Escolha sua cidade:</label>
           <select id="cidade">
             <option>Itiquira - MT</option>
             <option>Rondonópolis - MT</option>
@@ -225,13 +198,9 @@ footer {
             <option>Alto Garças - MT</option>
             <option>Guiratinga - MT</option>
           </select>
-
         </div>
 
-        <label for="tipo">
-          Tipo de trabalho
-        </label>
-
+        <label for="tipo">Tipo de trabalho</label>
         <select id="tipo">
           <option value="todos">Todos os tipos</option>
           <option value="integral">Período integral</option>
@@ -239,37 +208,29 @@ footer {
           <option value="temporario">Temporário</option>
         </select>
 
-        <button type="submit">
-          BUSCAR VAGAS
-        </button>
+        <button type="submit">BUSCAR VAGAS</button>
 
       </form>
-
     </div>
 
-   
-<div class="card">
+    <div class="card">
+      <h2>Vagas disponíveis</h2>
+      <div id="resultados">
+        <p id="semVagas">
+          Ainda não temos vagas cadastradas. Volte em breve!
+        </p>
+      </div>
+    </div>
 
-  <h2>Vagas disponíveis</h2>
+  </section>
 
-  <div id="resultados">
-    <p id="semVagas">
-      Ainda não temos vagas cadastradas. Volte em breve!
-    </p>
-  </div>
-
-</div>
-</section>
-
-  <!-- TELA DE CADASTRO DE EMPRESA -->
+  <!-- TELA DE EMPRESA -->
 
   <section id="empresa" class="hidden">
 
     <div class="card">
 
-      <button class="voltar" onclick="voltarInicio()">
-        ← Voltar
-      </button>
+      <button class="voltar" onclick="voltarInicio()">← Voltar</button>
 
       <h2>Oferecer emprego</h2>
 
@@ -288,90 +249,37 @@ footer {
 
         <h2>1. Dados da empresa</h2>
 
-        <label for="nomeEmpresa">
-          Nome da empresa
-        </label>
+        <label for="nomeEmpresa">Nome da empresa</label>
+        <input id="nomeEmpresa" type="text"
+          placeholder="Nome da empresa" required>
 
-        <input
-          id="nomeEmpresa"
-          type="text"
-          placeholder="Nome da empresa"
-          required
-        >
+        <label for="cnpj">CNPJ</label>
+        <input id="cnpj" type="text"
+          placeholder="00.000.000/0000-00" required>
 
-        <label for="cnpj">
-          CNPJ
-        </label>
+        <label for="responsavel">Nome do responsável</label>
+        <input id="responsavel" type="text"
+          placeholder="Nome completo" required>
 
-        <input
-          id="cnpj"
-          type="text"
-          placeholder="00.000.000/0000-00"
-          required
-        >
-
-        <label for="responsavel">
-          Nome do responsável
-        </label>
-
-        <input
-          id="responsavel"
-          type="text"
-          placeholder="Nome completo"
-          required
-        >
-
-        <label for="telefoneEmpresa">
-          Telefone ou WhatsApp
-        </label>
-
-        <input
-          id="telefoneEmpresa"
-          type="tel"
-          placeholder="(00) 00000-0000"
-          required
-        >
+        <label for="telefoneEmpresa">Telefone ou WhatsApp</label>
+        <input id="telefoneEmpresa" type="tel"
+          placeholder="(00) 00000-0000" required>
 
         <h2>2. Informações da vaga</h2>
 
-        <label for="cargo">
-          Nome do cargo
-        </label>
+        <label for="cargo">Nome do cargo</label>
+        <input id="cargo" type="text"
+          placeholder="Ex.: Motorista, vendedor..." required>
 
-        <input
-          id="cargo"
-          type="text"
-          placeholder="Ex.: Motorista, vendedor..."
-          required
-        >
+        <label for="quantidade">Quantidade de vagas</label>
+        <input id="quantidade" type="number"
+          min="1" placeholder="Ex.: 2" required>
 
-        <label for="quantidade">
-          Quantidade de vagas
-        </label>
+        <label for="salario">Salário oferecido</label>
+        <input id="salario" type="text"
+          placeholder="Ex.: R$ 2.500,00" required>
 
-        <input
-          id="quantidade"
-          type="number"
-          min="1"
-          placeholder="Ex.: 2"
-          required
-        >
-
-        <label for="salario">
-          Salário oferecido
-        </label>
-
-        <input
-          id="salario"
-          type="text"
-          placeholder="Ex.: R$ 2.500,00"
-          required
-        >
-
-        <label for="tipoVaga">
-          Tipo de trabalho
-        </label>
-
+        <label for="tipoVaga">Tipo de trabalho</label>
         <select id="tipoVaga" required>
           <option value="">Selecione</option>
           <option>Carteira assinada</option>
@@ -382,43 +290,22 @@ footer {
           <option>Autônomo</option>
         </select>
 
-        <label for="horario">
-          Horário de trabalho
-        </label>
+        <label for="horario">Horário de trabalho</label>
+        <input id="horario" type="text"
+          placeholder="Ex.: 07h às 17h" required>
 
-        <input
-          id="horario"
-          type="text"
-          placeholder="Ex.: 07h às 17h"
-          required
-        >
+        <label for="idade">Idade exigida (se houver)</label>
+        <input id="idade" type="text"
+          placeholder="Ex.: 18 anos ou mais">
 
-        <label for="idade">
-          Idade exigida (se houver)
-        </label>
-
-        <input
-          id="idade"
-          type="text"
-          placeholder="Ex.: 18 anos ou mais"
-        >
-
-        <label for="requisitos">
-          Requisitos e especificações
-        </label>
-
-        <textarea
-          id="requisitos"
+        <label for="requisitos">Requisitos e especificações</label>
+        <textarea id="requisitos"
           placeholder="Descreva as exigências e qualificações necessárias..."
-          required
-        ></textarea>
+          required></textarea>
 
         <h2>3. Localização da vaga</h2>
 
-        <label for="cidadeEmpresa">
-          Cidade
-        </label>
-
+        <label for="cidadeEmpresa">Cidade</label>
         <select id="cidadeEmpresa" required>
           <option value="">Selecione a cidade</option>
           <option>Itiquira - MT</option>
@@ -429,41 +316,79 @@ footer {
           <option>Outra cidade</option>
         </select>
 
-        <label for="endereco">
-          Endereço completo da vaga
-        </label>
-
-        <textarea
-          id="endereco"
+        <label for="endereco">Endereço completo da vaga</label>
+        <textarea id="endereco"
           placeholder="Rua, número, bairro e ponto de referência..."
-          required
-        ></textarea>
+          required></textarea>
 
-        <label for="descricao">
-          Descrição adicional da oportunidade
-        </label>
-
-        <textarea
-          id="descricao"
-          placeholder="Outras informações importantes sobre a vaga..."
-        ></textarea>
+        <label for="descricao">Descrição adicional da oportunidade</label>
+        <textarea id="descricao"
+          placeholder="Outras informações importantes sobre a vaga..."></textarea>
 
         <div class="aviso">
-          Ao continuar, você estará enviando os dados
-          para uma demonstração do cadastro.
-
+          O cadastro ainda é demonstrativo.
           A verificação do CNPJ, o pagamento e a
           publicação definitiva serão implementados
           nas próximas etapas.
         </div>
 
-        <button type="submit">
-          CADASTRAR OPORTUNIDADE
-        </button>
+        <button type="submit">CADASTRAR OPORTUNIDADE</button>
 
       </form>
 
       <div id="confirmacao" class="hidden"></div>
+
+    </div>
+
+  </section>
+
+  <!-- TELA DE CURRÍCULOS -->
+
+  <section id="areaCurriculos" class="hidden">
+
+    <div class="card">
+
+      <button class="voltar" onclick="voltarInicio()">← Voltar</button>
+
+      <h2>📄 Cadastro de Currículos</h2>
+
+      <p>Cadastre seu currículo e encontre uma oportunidade!</p>
+
+      <form id="formCurriculo">
+
+        <label for="nomeCandidato">Nome completo</label>
+        <input type="text" id="nomeCandidato"
+          placeholder="Nome completo" required>
+
+        <label for="telefoneCandidato">WhatsApp</label>
+        <input type="tel" id="telefoneCandidato"
+          placeholder="WhatsApp" required>
+
+        <label for="cidadeCandidato">Cidade onde mora</label>
+        <input type="text" id="cidadeCandidato"
+          placeholder="Cidade onde mora" required>
+
+        <label for="profissaoCandidato">Profissão que procura</label>
+        <input type="text" id="profissaoCandidato"
+          placeholder="Profissão que procura" required>
+
+        <label for="experienciaCandidato">Experiência profissional</label>
+        <textarea id="experienciaCandidato"
+          placeholder="Experiência profissional"></textarea>
+
+        <label for="escolaridadeCandidato">Escolaridade</label>
+        <input type="text" id="escolaridadeCandidato"
+          placeholder="Escolaridade">
+
+        <label for="habilidadesCandidato">Suas habilidades</label>
+        <textarea id="habilidadesCandidato"
+          placeholder="Suas habilidades"></textarea>
+
+        <button type="submit">CADASTRAR CURRÍCULO</button>
+
+      </form>
+
+      <div id="listaCurriculos"></div>
 
     </div>
 
@@ -479,26 +404,42 @@ footer {
 
 <script>
 
-function abrirBusca() {
+// FUNÇÃO PARA ESCONDER TODAS AS TELAS
+
+function esconderTelas() {
   document.getElementById("inicio").classList.add("hidden");
+  document.getElementById("busca").classList.add("hidden");
   document.getElementById("empresa").classList.add("hidden");
+  document.getElementById("areaCurriculos").classList.add("hidden");
+}
+
+// ABRIR TELAS
+
+function abrirBusca() {
+  esconderTelas();
   document.getElementById("busca").classList.remove("hidden");
   window.scrollTo(0, 0);
 }
 
 function abrirEmpresa() {
-  document.getElementById("inicio").classList.add("hidden");
-  document.getElementById("busca").classList.add("hidden");
+  esconderTelas();
   document.getElementById("empresa").classList.remove("hidden");
   window.scrollTo(0, 0);
 }
 
+function abrirCurriculos() {
+  esconderTelas();
+  document.getElementById("areaCurriculos").classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+
 function voltarInicio() {
-  document.getElementById("busca").classList.add("hidden");
-  document.getElementById("empresa").classList.add("hidden");
+  esconderTelas();
   document.getElementById("inicio").classList.remove("hidden");
   window.scrollTo(0, 0);
 }
+
+// ESCOLHA DE CIDADE
 
 function mostrarCidade() {
   const localidade =
@@ -507,6 +448,8 @@ function mostrarCidade() {
   document.getElementById("campoCidade")
     .classList.toggle("hidden", localidade !== "cidade");
 }
+
+// BUSCA DE VAGAS
 
 document.getElementById("formBusca")
   .addEventListener("submit", function(event) {
@@ -519,6 +462,8 @@ document.getElementById("formBusca")
 
   });
 
+// CADASTRO DEMONSTRATIVO DE EMPRESA
+
 document.getElementById("formEmpresa")
   .addEventListener("submit", function(event) {
 
@@ -528,11 +473,11 @@ document.getElementById("formEmpresa")
     const cargo = document.getElementById("cargo").value;
     const cidade = document.getElementById("cidadeEmpresa").value;
 
-    document.getElementById("confirmacao").classList.remove("hidden");
+    const confirmacao = document.getElementById("confirmacao");
 
-    document.getElementById("confirmacao").className = "sucesso";
+    confirmacao.className = "sucesso";
 
-    document.getElementById("confirmacao").innerHTML =
+    confirmacao.innerHTML =
       "<h3>Cadastro demonstrativo preenchido!</h3>" +
       "<p>Empresa: " + escapar(nome) + "</p>" +
       "<p>Vaga: " + escapar(cargo) + "</p>" +
@@ -543,6 +488,8 @@ document.getElementById("formEmpresa")
     window.scrollTo(0, document.body.scrollHeight);
 
   });
+
+// PROTEÇÃO DOS DADOS EXIBIDOS
 
 function escapar(valor) {
   return String(valor).replace(/[&<>"']/g, function(caractere) {
@@ -556,6 +503,7 @@ function escapar(valor) {
   });
 }
 
+// CADASTRO DE CURRÍCULOS
 
 document.getElementById("formCurriculo")
   .addEventListener("submit", function(event) {
@@ -573,7 +521,7 @@ document.getElementById("formCurriculo")
     const lista = document.getElementById("listaCurriculos");
 
     const curriculo = document.createElement("div");
-    curriculo.className = "card";
+    curriculo.className = "vaga";
 
     curriculo.innerHTML =
       "<h3>" + escapar(nome) + "</h3>" +
@@ -589,45 +537,10 @@ document.getElementById("formCurriculo")
     this.reset();
 
     alert("Currículo cadastrado nesta página com sucesso!");
+
   });
 
 </script>
-
-<!-- ÁREA DE CURRÍCULOS -->
-
-<section class="card hidden" id="areaCurriculos">
-  <h2>📄 Cadastro de Currículos</h2>
-  <p>Cadastre seu currículo e encontre uma oportunidade!</p>
-
-  <form id="formCurriculo">
-
-    <input type="text" id="nomeCandidato"
-      placeholder="Nome completo" required>
-
-    <input type="tel" id="telefoneCandidato"
-      placeholder="WhatsApp" required>
-
-    <input type="text" id="cidadeCandidato"
-      placeholder="Cidade onde mora" required>
-
-    <input type="text" id="profissaoCandidato"
-      placeholder="Profissão que procura" required>
-
-    <textarea id="experienciaCandidato"
-      placeholder="Experiência profissional"></textarea>
-
-    <input type="text" id="escolaridadeCandidato"
-      placeholder="Escolaridade">
-
-    <textarea id="habilidadesCandidato"
-      placeholder="Suas habilidades"></textarea>
-
-    <button type="submit">Cadastrar currículo</button>
-
-  </form>
-
-  <div id="listaCurriculos"></div>
-</section>  
 
 </body>
 </html>
