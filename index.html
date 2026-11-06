@@ -473,32 +473,68 @@ function escapar(valor) {
 
 }
 
-// CADASTRO DEMONSTRATIVO DE EMPRESA
 
+
+// CONTROLE DE PUBLICAÇÃO DE VAGAS
 document.getElementById("formEmpresa")
   .addEventListener("submit", function(event) {
-
     event.preventDefault();
 
-    const nome = document.getElementById("nomeEmpresa").value;
-    const cargo = document.getElementById("cargo").value;
+    const nome = document.getElementById("nomeEmpresa").value.trim();
+    const cnpj = document.getElementById("cnpj").value.replace(/\D/g, "");
+    const cargo = document.getElementById("cargo").value.trim();
     const cidade = document.getElementById("cidadeEmpresa").value;
-
     const confirmacao = document.getElementById("confirmacao");
+
+    if (cnpj.length !== 14) {
+      confirmacao.className = "aviso";
+      confirmacao.textContent =
+        "Informe um CNPJ válido com 14 números.";
+      return;
+    }
+
+    // Cada empresa tem seu próprio controle
+    const chave = "buscaEmprega_vagas_" + cnpj;
+
+    let quantidadePublicada = Number(
+      localStorage.getItem(chave) || 0
+    );
+
+    // A partir da segunda publicação, exige pagamento
+    if (quantidadePublicada >= 1) {
+      confirmacao.className = "aviso";
+
+      confirmacao.innerHTML =
+        "<h3>Pagamento necessário</h3>" +
+        "<p>Empresa: " + escapar(nome) + "</p>" +
+        "<p>Sua primeira publicação gratuita já foi utilizada.</p>" +
+        "<p>A partir de agora, é necessário pagar para publicar novas vagas.</p>" +
+        "<p>Em breve: pagamento por Pix e cartão.</p>" +
+        "<p>A publicação está bloqueada até a confirmação do pagamento.</p>";
+
+      window.scrollTo(0, document.body.scrollHeight);
+      return;
+    }
+
+    // Primeira publicação gratuita
+    localStorage.setItem(chave, "1");
 
     confirmacao.className = "sucesso";
 
     confirmacao.innerHTML =
-      "<h3>Cadastro demonstrativo preenchido!</h3>" +
+      "<h3>Primeira publicação gratuita!</h3>" +
       "<p>Empresa: " + escapar(nome) + "</p>" +
       "<p>Vaga: " + escapar(cargo) + "</p>" +
       "<p>Cidade: " + escapar(cidade) + "</p>" +
-      "<p>Os dados ainda não foram salvos nem publicados. " +
-      "A próxima etapa será conectar o cadastro ao sistema.</p>";
+      "<p><strong>Valor: GRÁTIS</strong></p>" +
+      "<p>Você utilizou sua primeira publicação gratuita.</p>" +
+      "<p>As próximas publicações precisarão de pagamento.</p>" +
+      "<p>Esta é uma demonstração local. A vaga ainda não foi publicada para outros usuários.</p>";
 
+    this.reset();
     window.scrollTo(0, document.body.scrollHeight);
-
   });
+
 
 // CADASTRO DE CURRÍCULOS
 
