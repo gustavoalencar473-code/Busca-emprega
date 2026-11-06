@@ -558,5 +558,41 @@ function escapar(valor) {
 
 </script>
 
+<!-- ÁREA DE CURRÍCULOS -->
+<section class="card">
+  <h2>📄 Cadastro de Currículos</h2>
+
+  <p>Cadastre seu currículo e encontre uma oportunidade!</p>
+
+  <form id="formCurriculo">
+
+    <input type="text" id="nomeCandidato"
+      placeholder="Nome completo" required>
+
+    <input type="tel" id="telefoneCandidato"
+      placeholder="WhatsApp" required>
+
+    <input type="text" id="cidadeCandidato"
+      placeholder="Cidade onde mora" required>
+
+    <input type="text" id="profissaoCandidato"
+      placeholder="Profissão que procura" required>
+
+    <textarea id="experienciaCandidato"
+      placeholder="Experiência profissional"></textarea>
+
+    <input type="text" id="escolaridadeCandidato"
+      placeholder="Escolaridade">
+
+    <textarea id="habilidadesCandidato"
+      placeholder="Suas habilidades"></textarea>
+
+    <button type="submit">Cadastrar currículo</button>
+
+  </form>
+
+  <div id="listaCurriculos"></div>
+</section>  
+
 </body>
 </html>
