@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -86,74 +85,58 @@ h2 { color: var(--azul); margin-top: 0; }
 h3 { color: var(--azul); }
 p { line-height: 1.5; }
 
-.hero {
-  background: linear-gradient(145deg,#082b57,#176ba1);
-  color: white;
-  padding: 25px 19px;
-  border-radius: 26px;
-  margin-bottom: 20px;
-  box-shadow: 0 7px 20px #082b5730;
-}
+/* IMAGEM COMPLETA DA TELA INICIAL */
 
-.hero h2 {
-  color: white;
-  font-size: 29px;
-  line-height: 1.2;
-  margin-bottom: 12px;
-}
-
-.hero p { color: #e1edff; }
-
-.paisagem {
-  width: 100%;
-  height: 205px;
-  border-radius: 19px;
+.capa-inicial {
+  position: relative;
+  width: calc(100% + 34px);
+  margin-left: -17px;
   overflow: hidden;
-  margin-top: 19px;
-  background: #dceaf5;
+  line-height: 0;
 }
 
-.paisagem img {
-  width: 100%;
-  height: 100%;
+.capa-inicial img {
   display: block;
-  object-fit: cover;
-}
-
-.localizacao {
-  margin-top: 15px;
-  font-size: 17px;
-  font-weight: bold;
-}
-
-.botao {
   width: 100%;
-  padding: 16px;
+  height: auto;
+}
+
+/* BOTÕES INVISÍVEIS SOBRE OS BOTÕES DA IMAGEM */
+
+.botao-capa {
+  position: absolute;
   border: 0;
-  border-radius: 12px;
-  background: var(--azul-claro);
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
+  background: transparent;
+  padding: 0;
   cursor: pointer;
-  margin-top: 12px;
+  z-index: 5;
+  border-radius: 20px;
 }
 
-.botao:active { transform: scale(.98); }
-.verde { background: var(--verde); }
-.escuro { background: var(--azul); }
-
-.cartao-inicio { padding: 22px; }
-.icone-grande { font-size: 38px; margin-bottom: 10px; }
-
-.cartao-inicio h2 {
-  font-size: 23px;
-  margin-bottom: 8px;
+.botao-capa:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
 }
 
-.cartao-inicio p {
-  color: #68778d;
-  margin-bottom: 17px;
+.botao-capa-1 {
+  left: 65%;
+  top: 47.3%;
+  width: 32%;
+  height: 8.1%;
+}
+
+.botao-capa-2 {
+  left: 65%;
+  top: 60.5%;
+  width: 32%;
+  height: 8.1%;
+}
+
+.botao-capa-3 {
+  left: 65%;
+  top: 73.6%;
+  width: 32%;
+  height: 8.1%;
 }
 
 .titulo-secao {
@@ -233,6 +216,21 @@ textarea {
 
 .hidden { display: none !important; }
 
+.botao {
+  width: 100%;
+  padding: 16px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--azul-claro);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.botao:active { transform: scale(.98); }
+
 .voltar {
   background: #e9f1fc;
   color: var(--azul);
@@ -254,14 +252,18 @@ footer {
 
 @media (min-width:650px) {
   .container { padding: 25px; }
-  .hero { padding: 35px; }
+
+  .capa-inicial {
+    width: calc(100% + 50px);
+    margin-left: -25px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<header id="cabecalho">
   <div class="logo">
     <div class="logo-icone">💼</div>
     <h1>Busca <span>Emprega</span></h1>
@@ -271,63 +273,38 @@ footer {
 
 <main class="container">
 
-<!-- TELA INICIAL -->
+<!-- TELA INICIAL COM A IMAGEM E SOMENTE 3 BOTÕES -->
+
 <section id="inicio">
 
-  <div class="hero">
-    <h2>Seu próximo emprego pode estar aqui!</h2>
+  <div class="capa-inicial">
 
-    <p>
-      Conectando talentos e empresas da nossa região.
-      Encontre oportunidades ou encontre profissionais.
-    </p>
+    <img
+      src="./tela-inicial-busca-emprega.png"
+      alt="Tela inicial do Busca Emprega Soluções"
+    >
 
-    <div class="paisagem">
-      <img
-        src="./tela-inicial-busca-emprega.png"
-        alt="Imagem da tela inicial do Busca Emprega"
-      >
-    </div>
-
-    <div class="localizacao">📍 Itiquira e região</div>
-  </div>
-
-  <!-- BOTÃO 1 -->
-  <div class="card cartao-inicio">
-    <div class="icone-grande">👤</div>
-    <h2>Sou candidato</h2>
-    <p>Encontre oportunidades de trabalho na sua região.</p>
-    <button class="botao verde"
+    <button
+      type="button"
+      class="botao-capa botao-capa-1"
+      aria-label="Buscar emprego"
       onclick="abrirPagina('busca')">
-      BUSCAR EMPREGO
     </button>
-  </div>
 
-  <!-- BOTÃO 2 -->
-  <div class="card cartao-inicio">
-    <div class="icone-grande">🏢</div>
-    <h2>Sou empresa</h2>
-    <p>Encontre profissionais para sua empresa.</p>
-    <button class="botao"
+    <button
+      type="button"
+      class="botao-capa botao-capa-2"
+      aria-label="Oferecer emprego"
       onclick="abrirPagina('empresa')">
-      OFERECER EMPREGO
     </button>
-  </div>
 
-  <!-- BOTÃO 3 -->
-  <div class="card cartao-inicio">
-    <div class="icone-grande">📄</div>
-    <h2>Cadastre seu currículo</h2>
-    <p>Apresente suas experiências e habilidades às empresas.</p>
-    <button class="botao escuro"
+    <button
+      type="button"
+      class="botao-capa botao-capa-3"
+      aria-label="Cadastrar currículo"
       onclick="abrirPagina('curriculos')">
-      MEU CURRÍCULO
     </button>
-  </div>
 
-  <div class="aviso">
-    🛡️ <strong>Busca Emprega Soluções</strong><br>
-    Nosso objetivo é aproximar empresas e profissionais.
   </div>
 
   <div class="titulo-secao">
@@ -339,6 +316,7 @@ footer {
 </section>
 
 <!-- BUSCAR EMPREGO -->
+
 <section id="busca" class="hidden">
 
   <button class="voltar" onclick="voltarInicio()">← Voltar</button>
@@ -390,6 +368,7 @@ footer {
 </section>
 
 <!-- OFERECER EMPREGO -->
+
 <section id="empresa" class="hidden">
 
   <button class="voltar" onclick="voltarInicio()">← Voltar</button>
@@ -492,6 +471,7 @@ footer {
 </section>
 
 <!-- CURRÍCULOS -->
+
 <section id="curriculos" class="hidden">
 
   <button class="voltar" onclick="voltarInicio()">← Voltar</button>
@@ -542,16 +522,15 @@ footer {
 
 </main>
 
-<!-- MENU INFERIOR REMOVIDO PARA EVITAR DUPLICAÇÃO -->
-
-<footer>
+<footer id="rodape">
   <strong>Busca Emprega Soluções</strong><br>
   © 2026 - Conectando pessoas a oportunidades.
 </footer>
 
 <script>
 
-// NAVEGAÇÃO
+// NAVEGAÇÃO ENTRE AS PÁGINAS
+
 function abrirPagina(pagina) {
 
   ["inicio", "busca", "empresa", "curriculos"].forEach(function(id) {
@@ -559,6 +538,15 @@ function abrirPagina(pagina) {
   });
 
   document.getElementById(pagina).classList.remove("hidden");
+
+  // Esconde cabeçalho e rodapé na tela inicial.
+  // Mostra os dois nas páginas internas.
+
+  document.getElementById("cabecalho").style.display =
+    pagina === "inicio" ? "none" : "";
+
+  document.getElementById("rodape").style.display =
+    pagina === "inicio" ? "none" : "";
 
   if (pagina === "busca") mostrarVagas();
   if (pagina === "inicio") mostrarDestaques();
@@ -571,6 +559,7 @@ function voltarInicio() {
 }
 
 // CIDADE
+
 function mostrarCidade() {
   const localidade = document.getElementById("localidade").value;
 
@@ -579,6 +568,7 @@ function mostrarCidade() {
 }
 
 // PROTEÇÃO DE TEXTO
+
 function escapar(valor) {
   return String(valor ?? "").replace(/[&<>"']/g, function(c) {
     return {
@@ -592,6 +582,7 @@ function escapar(valor) {
 }
 
 // ARMAZENAMENTO
+
 function chavePublicadas(cnpj) {
   return "buscaEmprega_publicadas_" + cnpj;
 }
@@ -627,6 +618,7 @@ function obterVagasPublicadas() {
 }
 
 // CARTÃO DE VAGA
+
 function criarCartaoVaga(vaga) {
 
   const cartao = document.createElement("div");
@@ -648,6 +640,7 @@ function criarCartaoVaga(vaga) {
 }
 
 // MOSTRAR VAGAS
+
 function mostrarVagas(lista = null) {
 
   const resultados = document.getElementById("resultados");
@@ -670,6 +663,7 @@ function mostrarVagas(lista = null) {
 }
 
 // DESTAQUES DA INICIAL
+
 function mostrarDestaques() {
 
   const area = document.getElementById("vagasInicio");
@@ -689,6 +683,7 @@ function mostrarDestaques() {
 }
 
 // BUSCA DE VAGAS
+
 document.getElementById("formBusca")
 .addEventListener("submit", function(event) {
 
@@ -731,6 +726,7 @@ document.getElementById("formBusca")
 });
 
 // CADASTRO DE EMPRESAS E VAGAS
+
 document.getElementById("formEmpresa")
 .addEventListener("submit", function(event) {
 
@@ -837,6 +833,7 @@ document.getElementById("formEmpresa")
 });
 
 // CADASTRO DE CURRÍCULOS
+
 document.getElementById("formCurriculo")
 .addEventListener("submit", function(event) {
 
@@ -878,7 +875,8 @@ document.getElementById("formCurriculo")
 });
 
 // INICIALIZAÇÃO
-mostrarDestaques();
+
+abrirPagina("inicio");
 
 </script>
 
