@@ -5,82 +5,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d4d">
 <title>Busca Emprega Soluções</title>
+
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --azul: #102d4d;
+  --azul-claro: #1d5c91;
+  --verde: #168653;
+  --fundo: #f2f5f9;
+  --texto: #243247;
+}
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f2f3f7;
-  color: #222;
+  background: var(--fundo);
+  color: var(--texto);
 }
 
 header {
-  background: #15375b;
+  background: linear-gradient(135deg, #102d4d, #1d5c91);
   color: white;
   text-align: center;
-  padding: 30px 15px;
+  padding: 22px 15px;
 }
 
-header h1 { font-size: 30px; margin: 10px 0; }
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 18px;
+  background: #ffffff;
+  color: var(--azul);
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+header h1 {
+  font-size: 27px;
+  margin: 5px 0;
+  letter-spacing: 1px;
+}
+
+header p {
+  margin: 7px 0 0;
+  font-size: 14px;
+  color: #e5eef8;
+}
 
 .container {
   max-width: 650px;
   margin: auto;
-  padding: 20px;
+  padding: 18px;
 }
 
 .card {
   background: white;
-  padding: 22px;
-  margin-bottom: 20px;
-  border-radius: 16px;
-  box-shadow: 0 3px 12px #00000012;
+  padding: 21px;
+  margin-bottom: 18px;
+  border-radius: 17px;
+  box-shadow: 0 4px 16px #102d4d12;
 }
 
-h2 { color: #15375b; }
+h2 {
+  color: var(--azul);
+}
 
 button {
   width: 100%;
   padding: 15px;
   border: none;
-  border-radius: 9px;
-  background: #19764d;
+  border-radius: 10px;
+  background: var(--verde);
   color: white;
-  font-size: 17px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
 }
 
-button:hover { background: #125b3a; }
+button:hover {
+  opacity: .92;
+}
 
 input, select, textarea {
   width: 100%;
   padding: 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 1px solid #ccd5df;
+  border-radius: 9px;
   font-size: 16px;
   margin: 9px 0 17px;
   background: white;
   font-family: Arial, sans-serif;
 }
 
-textarea { min-height: 100px; resize: vertical; }
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
 
 label {
   font-weight: bold;
   display: block;
   margin-top: 12px;
+  color: #263d56;
 }
 
-.hidden { display: none !important; }
-.voltar { background: #15375b; }
+.hidden {
+  display: none !important;
+}
+
+.voltar {
+  background: var(--azul);
+}
 
 .aviso {
   background: #eaf2fa;
   padding: 14px;
-  border-radius: 9px;
+  border-radius: 10px;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -95,19 +144,153 @@ label {
 }
 
 .vaga {
-  border: 1px solid #ddd;
+  border: 1px solid #dce3eb;
   padding: 17px;
   border-radius: 12px;
   margin-top: 15px;
+  background: #fff;
 }
 
-.vaga h3 { color: #15375b; }
+.vaga h3 {
+  color: var(--azul);
+  margin-top: 0;
+}
+
+.hero {
+  background: linear-gradient(145deg, #102d4d, #286b9e);
+  color: white;
+  border-radius: 20px;
+  padding: 25px 20px;
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.hero h2 {
+  color: white;
+  font-size: 25px;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+.hero p {
+  color: #e5eef8;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.paisagem {
+  height: 155px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 18px;
+  background:
+    linear-gradient(to bottom, #83c4e8 0%, #d6effa 58%, #7bbd78 59%, #397c4d 100%);
+}
+
+.sol {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #ffdc79;
+  top: 18px;
+  right: 35px;
+}
+
+.morro {
+  position: absolute;
+  width: 180px;
+  height: 100px;
+  bottom: 0;
+  border-radius: 100% 100% 0 0;
+  background: #528e60;
+}
+
+.morro.um {
+  left: -35px;
+}
+
+.morro.dois {
+  right: -35px;
+  width: 220px;
+  height: 115px;
+  background: #36744e;
+}
+
+.paisagem-legenda {
+  position: absolute;
+  z-index: 2;
+  left: 14px;
+  bottom: 12px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 2px 4px #0008;
+}
+
+.acoes-inicio {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.acao {
+  border: 1px solid #e0e7ef;
+  border-radius: 15px;
+  padding: 17px;
+  background: white;
+}
+
+.acao .icone {
+  font-size: 27px;
+}
+
+.acao h3 {
+  margin: 8px 0;
+  color: var(--azul);
+}
+
+.acao p {
+  font-size: 14px;
+  color: #66758a;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.botao-azul {
+  background: var(--azul);
+}
+
+.botao-secundario {
+  background: #eaf2fa;
+  color: var(--azul);
+  border: 1px solid #d7e4f1;
+}
+
+.selo {
+  text-align: center;
+  padding: 15px 10px;
+  color: #456078;
+  font-size: 13px;
+  line-height: 1.5;
+}
 
 footer {
   text-align: center;
-  padding: 25px;
-  color: #777;
+  padding: 25px 15px;
+  color: #718096;
   font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (min-width: 520px) {
+  .acoes-inicio {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .acao:last-child {
+    grid-column: 1 / -1;
+  }
 }
 </style>
 </head>
@@ -115,6 +298,7 @@ footer {
 <body>
 
 <header>
+  <div class="logo">💼</div>
   <h1>BUSCA EMPREGA</h1>
   <p>Soluções para quem procura e oferece emprego</p>
 </header>
@@ -123,23 +307,60 @@ footer {
 
 <!-- TELA INICIAL -->
 <section id="inicio">
-  <div class="card">
-    <h2>Estou procurando emprego</h2>
-    <p>Encontre oportunidades de trabalho na sua região.</p>
-    <button onclick="abrirPagina('busca')">Buscar emprego</button>
+
+  <div class="hero">
+    <h2>Seu próximo emprego pode estar aqui!</h2>
+    <p>
+      Conectando talentos e empresas da nossa região.
+      Encontre oportunidades ou encontre profissionais.
+    </p>
+
+    <div class="paisagem">
+      <div class="sol"></div>
+      <div class="morro um"></div>
+      <div class="morro dois"></div>
+      <div class="paisagem-legenda">
+        📍 Itiquira e região
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>Sou empresa</h2>
-    <p>Encontre profissionais para sua empresa.</p>
-    <button onclick="abrirPagina('empresa')">Oferecer emprego</button>
+  <div class="acoes-inicio">
+
+    <div class="acao">
+      <div class="icone">👤</div>
+      <h3>Sou candidato</h3>
+      <p>Encontre oportunidades de trabalho na sua região.</p>
+      <button onclick="abrirPagina('busca')">
+        BUSCAR EMPREGO
+      </button>
+    </div>
+
+    <div class="acao">
+      <div class="icone">🏢</div>
+      <h3>Sou empresa</h3>
+      <p>Encontre profissionais para sua empresa.</p>
+      <button class="botao-azul" onclick="abrirPagina('empresa')">
+        OFERECER EMPREGO
+      </button>
+    </div>
+
+    <div class="acao">
+      <div class="icone">📄</div>
+      <h3>Currículos</h3>
+      <p>Cadastre seu currículo e mostre suas habilidades.</p>
+      <button class="botao-secundario" onclick="abrirPagina('curriculos')">
+        CADASTRAR CURRÍCULO
+      </button>
+    </div>
+
   </div>
 
-  <div class="card">
-    <h2>Currículos</h2>
-    <p>Cadastre seu currículo e encontre oportunidades.</p>
-    <button onclick="abrirPagina('curriculos')">Cadastrar currículo</button>
+  <div class="selo">
+    🛡️ <strong>Busca Emprega Soluções</strong><br>
+    Uma plataforma para aproximar empresas e profissionais.
   </div>
+
 </section>
 
 <!-- BUSCAR EMPREGO -->
@@ -202,6 +423,7 @@ footer {
     </div>
 
     <form id="formEmpresa">
+
       <h2>1. Dados da empresa</h2>
 
       <label for="nomeEmpresa">Nome da empresa</label>
@@ -285,6 +507,7 @@ footer {
     <p>Cadastre seu currículo e encontre uma oportunidade!</p>
 
     <form id="formCurriculo">
+
       <label for="nomeCandidato">Nome completo</label>
       <input type="text" id="nomeCandidato" placeholder="Nome completo" required>
 
@@ -330,7 +553,9 @@ function abrirPagina(pagina) {
 
   document.getElementById(pagina).classList.remove("hidden");
 
-  if (pagina === "busca") mostrarVagas();
+  if (pagina === "busca") {
+    mostrarVagas();
+  }
 
   window.scrollTo(0, 0);
 }
@@ -342,6 +567,7 @@ function voltarInicio() {
 // CIDADE
 function mostrarCidade() {
   const localidade = document.getElementById("localidade").value;
+
   document.getElementById("campoCidade")
     .classList.toggle("hidden", localidade !== "cidade");
 }
@@ -382,7 +608,10 @@ function obterVagasPublicadas() {
     if (chave && chave.startsWith("buscaEmprega_publicadas_")) {
       try {
         const vagas = JSON.parse(localStorage.getItem(chave) || "[]");
-        if (Array.isArray(vagas)) todas = todas.concat(vagas);
+
+        if (Array.isArray(vagas)) {
+          todas = todas.concat(vagas);
+        }
       } catch (erro) {
         console.error("Erro ao ler vagas:", erro);
       }
@@ -429,7 +658,9 @@ document.getElementById("formBusca")
   .addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const profissao = document.getElementById("profissao").value.trim().toLowerCase();
+    const profissao = document.getElementById("profissao")
+      .value.trim().toLowerCase();
+
     const localidade = document.getElementById("localidade").value;
     const cidade = document.getElementById("cidade").value;
     const tipo = document.getElementById("tipo").value;
@@ -438,12 +669,12 @@ document.getElementById("formBusca")
 
     vagas = vagas.filter(function(vaga) {
       const combinaProfissao =
-        !profissao || vaga.cargo.toLowerCase().includes(profissao);
+        !profissao || String(vaga.cargo || "").toLowerCase().includes(profissao);
 
       const combinaCidade =
         localidade !== "cidade" || vaga.cidade === cidade;
 
-      const tipoVaga = String(vaga.tipo).toLowerCase();
+      const tipoVaga = String(vaga.tipo || "").toLowerCase();
 
       const combinaTipo =
         tipo === "todos" ||
@@ -516,7 +747,7 @@ document.getElementById("formEmpresa")
         "<p>Vaga: " + escapar(vaga.cargo) + "</p>" +
         "<p>Cidade: " + escapar(vaga.cidade) + "</p>" +
         "<p><strong>Valor: GRÁTIS</strong></p>" +
-        "<p>A vaga foi registrada no protótipo e aparecerá na busca deste navegador.</p>";
+        "<p>A vaga foi registrada neste navegador e aparecerá na busca deste protótipo.</p>";
 
       this.reset();
 
@@ -577,11 +808,12 @@ document.getElementById("formCurriculo")
       "<p><strong>Habilidades:</strong> " + escapar(habilidades) + "</p>";
 
     lista.appendChild(curriculo);
+
     this.reset();
 
     alert("Currículo cadastrado nesta página com sucesso!");
   });
-
 </script>
+
 </body>
 </html>
