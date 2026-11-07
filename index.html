@@ -160,7 +160,7 @@ label {
   background: linear-gradient(145deg, #102d4d, #286b9e);
   color: white;
   border-radius: 20px;
-  padding: 25px 20px;
+  padding: 20px;
   margin-bottom: 18px;
   overflow: hidden;
 }
@@ -178,54 +178,16 @@ label {
   margin-bottom: 18px;
 }
 
-.paisagem {
-  height: 155px;
+.imagem-inicio {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  object-position: center;
   border-radius: 14px;
-  overflow: hidden;
-  position: relative;
-  margin-top: 18px;
-  background:
-    linear-gradient(to bottom, #83c4e8 0%, #d6effa 58%, #7bbd78 59%, #397c4d 100%);
-}
-
-.sol {
-  position: absolute;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: #ffdc79;
-  top: 18px;
-  right: 35px;
-}
-
-.morro {
-  position: absolute;
-  width: 180px;
-  height: 100px;
-  bottom: 0;
-  border-radius: 100% 100% 0 0;
-  background: #528e60;
-}
-
-.morro.um {
-  left: -35px;
-}
-
-.morro.dois {
-  right: -35px;
-  width: 220px;
-  height: 115px;
-  background: #36744e;
-}
-
-.paisagem-legenda {
-  position: absolute;
-  z-index: 2;
-  left: 14px;
-  bottom: 12px;
-  color: white;
-  font-weight: bold;
-  text-shadow: 0 2px 4px #0008;
+  margin-top: 15px;
+  background: white;
 }
 
 .acoes-inicio {
@@ -310,19 +272,18 @@ footer {
 
   <div class="hero">
     <h2>Seu próximo emprego pode estar aqui!</h2>
+
     <p>
       Conectando talentos e empresas da nossa região.
       Encontre oportunidades ou encontre profissionais.
     </p>
 
-    <div class="paisagem">
-      <div class="sol"></div>
-      <div class="morro um"></div>
-      <div class="morro dois"></div>
-      <div class="paisagem-legenda">
-        📍 Itiquira e região
-      </div>
-    </div>
+    <!-- IMAGEM PRINCIPAL ENVIADA AO GITHUB -->
+    <img
+      class="imagem-inicio"
+      src="tela-inicial-busca-emprega.png"
+      alt="Tela inicial do Busca Emprega Soluções"
+    >
   </div>
 
   <div class="acoes-inicio">
@@ -365,12 +326,15 @@ footer {
 
 <!-- BUSCAR EMPREGO -->
 <section id="busca" class="hidden">
+
   <div class="card">
     <button class="voltar" onclick="voltarInicio()">← Voltar</button>
+
     <h2>Encontre seu emprego</h2>
     <p>Procure oportunidades na sua região.</p>
 
     <form id="formBusca">
+
       <label for="profissao">Qual profissão você procura?</label>
       <input id="profissao" type="text" placeholder="Ex.: motorista, vendedor...">
 
@@ -400,6 +364,7 @@ footer {
       </select>
 
       <button type="submit">BUSCAR VAGAS</button>
+
     </form>
   </div>
 
@@ -409,12 +374,16 @@ footer {
       <p>Ainda não temos vagas cadastradas. Volte em breve!</p>
     </div>
   </div>
+
 </section>
 
 <!-- OFERECER EMPREGO -->
 <section id="empresa" class="hidden">
+
   <div class="card">
+
     <button class="voltar" onclick="voltarInicio()">← Voltar</button>
+
     <h2>Oferecer emprego</h2>
     <p>Cadastre sua empresa e informe a oportunidade disponível.</p>
 
@@ -493,16 +462,22 @@ footer {
       </div>
 
       <button type="submit">CADASTRAR OPORTUNIDADE</button>
+
     </form>
 
     <div id="confirmacao" class="hidden"></div>
+
   </div>
+
 </section>
 
 <!-- CURRÍCULOS -->
 <section id="curriculos" class="hidden">
+
   <div class="card">
+
     <button class="voltar" onclick="voltarInicio()">← Voltar</button>
+
     <h2>📄 Cadastro de Currículos</h2>
     <p>Cadastre seu currículo e encontre uma oportunidade!</p>
 
@@ -530,10 +505,13 @@ footer {
       <textarea id="habilidadesCandidato" placeholder="Suas habilidades"></textarea>
 
       <button type="submit">CADASTRAR CURRÍCULO</button>
+
     </form>
 
     <div id="listaCurriculos"></div>
+
   </div>
+
 </section>
 
 </main>
@@ -545,6 +523,7 @@ footer {
 </footer>
 
 <script>
+
 // NAVEGAÇÃO
 function abrirPagina(pagina) {
   ["inicio", "busca", "empresa", "curriculos"].forEach(function(id) {
@@ -656,6 +635,7 @@ function mostrarVagas(lista = null) {
 // BUSCAR VAGAS
 document.getElementById("formBusca")
   .addEventListener("submit", function(event) {
+
     event.preventDefault();
 
     const profissao = document.getElementById("profissao")
@@ -668,8 +648,10 @@ document.getElementById("formBusca")
     let vagas = obterVagasPublicadas();
 
     vagas = vagas.filter(function(vaga) {
+
       const combinaProfissao =
-        !profissao || String(vaga.cargo || "").toLowerCase().includes(profissao);
+        !profissao ||
+        String(vaga.cargo || "").toLowerCase().includes(profissao);
 
       const combinaCidade =
         localidade !== "cidade" || vaga.cidade === cidade;
@@ -692,6 +674,7 @@ document.getElementById("formBusca")
 // CADASTRO E CONTROLE DE VAGAS
 document.getElementById("formEmpresa")
   .addEventListener("submit", function(event) {
+
     event.preventDefault();
 
     const confirmacao = document.getElementById("confirmacao");
@@ -725,12 +708,14 @@ document.getElementById("formEmpresa")
       localStorage.getItem(chaveGratis(cnpj)) === "sim";
 
     if (!gratisUsada) {
+
       const publicadas = JSON.parse(
         localStorage.getItem(chavePublicadas(cnpj)) || "[]"
       );
 
       vaga.status = "publicada";
       vaga.pagamento = "gratuito";
+
       publicadas.push(vaga);
 
       localStorage.setItem(
@@ -741,6 +726,7 @@ document.getElementById("formEmpresa")
       localStorage.setItem(chaveGratis(cnpj), "sim");
 
       confirmacao.className = "sucesso";
+
       confirmacao.innerHTML =
         "<h3>Primeira vaga gratuita!</h3>" +
         "<p>Empresa: " + escapar(vaga.empresa) + "</p>" +
@@ -752,12 +738,14 @@ document.getElementById("formEmpresa")
       this.reset();
 
     } else {
+
       const pendentes = JSON.parse(
         localStorage.getItem(chavePendentes(cnpj)) || "[]"
       );
 
       vaga.status = "aguardando_pagamento";
       vaga.pagamento = "pendente";
+
       pendentes.push(vaga);
 
       localStorage.setItem(
@@ -766,6 +754,7 @@ document.getElementById("formEmpresa")
       );
 
       confirmacao.className = "aviso";
+
       confirmacao.innerHTML =
         "<h3>Vaga preparada com sucesso!</h3>" +
         "<p>Empresa: " + escapar(vaga.empresa) + "</p>" +
@@ -783,6 +772,7 @@ document.getElementById("formEmpresa")
 // CADASTRO DE CURRÍCULOS
 document.getElementById("formCurriculo")
   .addEventListener("submit", function(event) {
+
     event.preventDefault();
 
     const nome = document.getElementById("nomeCandidato").value;
@@ -813,6 +803,7 @@ document.getElementById("formCurriculo")
 
     alert("Currículo cadastrado nesta página com sucesso!");
   });
+
 </script>
 
 </body>
