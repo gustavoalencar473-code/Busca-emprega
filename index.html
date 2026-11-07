@@ -9,9 +9,7 @@
 <title>Busca Emprega Soluções</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 :root {
   --azul: #073879;
@@ -29,12 +27,8 @@ body {
   color: var(--texto);
 }
 
-button, input, select, textarea {
-  font-family: Arial, sans-serif;
-}
-
 header {
-  background: linear-gradient(120deg, #062653, #0755a5);
+  background: linear-gradient(120deg,#062653,#0755a5);
   color: white;
   padding: 20px 16px;
   text-align: center;
@@ -64,9 +58,7 @@ header {
   font-style: italic;
 }
 
-.logo h1 span {
-  color: #24b5ff;
-}
+.logo h1 span { color: #24b5ff; }
 
 header p {
   margin: 12px 0 0;
@@ -90,21 +82,12 @@ header p {
   border: 1px solid #e3eaf4;
 }
 
-h2 {
-  color: var(--azul);
-  margin-top: 0;
-}
-
-h3 {
-  color: var(--azul);
-}
-
-p {
-  line-height: 1.5;
-}
+h2 { color: var(--azul); margin-top: 0; }
+h3 { color: var(--azul); }
+p { line-height: 1.5; }
 
 .hero {
-  background: linear-gradient(145deg, #082b57, #176ba1);
+  background: linear-gradient(145deg,#082b57,#176ba1);
   color: white;
   padding: 25px 19px;
   border-radius: 26px;
@@ -119,25 +102,22 @@ p {
   margin-bottom: 12px;
 }
 
-.hero p {
-  font-size: 16px;
-  color: #e1edff;
-}
+.hero p { color: #e1edff; }
 
 .paisagem {
   width: 100%;
   height: 205px;
   border-radius: 19px;
   overflow: hidden;
-  position: relative;
   margin-top: 19px;
-  background: linear-gradient(#82c9f1 0%, #c7eaff 65%, #83bd73 66%);
+  background: #dceaf5;
 }
 
-.paisagem svg {
+.paisagem img {
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: cover;
 }
 
 .localizacao {
@@ -159,26 +139,12 @@ p {
   margin-top: 12px;
 }
 
-.botao:active {
-  transform: scale(.98);
-}
+.botao:active { transform: scale(.98); }
+.verde { background: var(--verde); }
+.escuro { background: var(--azul); }
 
-.verde {
-  background: var(--verde);
-}
-
-.escuro {
-  background: var(--azul);
-}
-
-.cartao-inicio {
-  padding: 22px;
-}
-
-.icone-grande {
-  font-size: 38px;
-  margin-bottom: 10px;
-}
+.cartao-inicio { padding: 22px; }
+.icone-grande { font-size: 38px; margin-bottom: 10px; }
 
 .cartao-inicio h2 {
   font-size: 23px;
@@ -211,10 +177,7 @@ p {
   box-shadow: 0 3px 12px #00000008;
 }
 
-.vaga h3 {
-  margin-top: 0;
-  font-size: 19px;
-}
+.vaga h3 { margin-top: 0; font-size: 19px; }
 
 .etiqueta {
   display: inline-block;
@@ -268,9 +231,7 @@ textarea {
   resize: vertical;
 }
 
-.hidden {
-  display: none !important;
-}
+.hidden { display: none !important; }
 
 .voltar {
   background: #e9f1fc;
@@ -284,37 +245,6 @@ textarea {
   margin-bottom: 18px;
 }
 
-.menu-inferior {
-  display: flex;
-  justify-content: space-around;
-  background: white;
-  border-top: 1px solid #dfe5ef;
-  padding: 12px 3px;
-  position: sticky;
-  bottom: 0;
-  z-index: 5;
-}
-
-.menu-inferior button {
-  background: transparent;
-  border: none;
-  color: #526683;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 5px;
-}
-
-.menu-inferior span {
-  display: block;
-  font-size: 23px;
-  margin-bottom: 4px;
-}
-
-.menu-inferior button.ativo {
-  color: #0878f9;
-}
-
 footer {
   text-align: center;
   padding: 25px 15px;
@@ -322,14 +252,9 @@ footer {
   font-size: 13px;
 }
 
-@media (min-width: 650px) {
-  .container {
-    padding: 25px;
-  }
-
-  .hero {
-    padding: 35px;
-  }
+@media (min-width:650px) {
+  .container { padding: 25px; }
+  .hero { padding: 35px; }
 }
 </style>
 </head>
@@ -357,105 +282,52 @@ footer {
       Encontre oportunidades ou encontre profissionais.
     </p>
 
-    <!-- PAISAGEM ILUSTRATIVA -->
     <div class="paisagem">
-      <svg viewBox="0 0 600 230"
-           preserveAspectRatio="xMidYMid slice"
-           xmlns="http://www.w3.org/2000/svg">
-
-        <circle cx="465" cy="65" r="35" fill="#ffdb70"/>
-
-        <path d="M0 130 Q130 55 260 130 Q390 30 600 125 L600 230 L0 230Z"
-              fill="#538c62"/>
-
-        <path d="M0 165 Q130 105 290 160 Q450 85 600 150 L600 230 L0 230Z"
-              fill="#246b49"/>
-
-        <path d="M0 205 L600 205 L600 230 L0 230Z"
-              fill="#b5d58b"/>
-
-        <!-- Cidade ilustrativa -->
-        <g fill="#f4f1e8">
-          <rect x="55" y="155" width="55" height="53"/>
-          <rect x="125" y="145" width="65" height="63"/>
-          <rect x="215" y="162" width="55" height="46"/>
-          <rect x="340" y="150" width="70" height="58"/>
-          <rect x="440" y="162" width="65" height="46"/>
-        </g>
-
-        <g fill="#bd7751">
-          <path d="M45 155 L82 130 L120 155Z"/>
-          <path d="M115 145 L158 118 L200 145Z"/>
-          <path d="M205 162 L243 139 L280 162Z"/>
-          <path d="M330 150 L375 122 L420 150Z"/>
-          <path d="M430 162 L472 139 L515 162Z"/>
-        </g>
-
-        <!-- Igreja ilustrativa -->
-        <g>
-          <rect x="270" y="130" width="65" height="78"
-                fill="#f8f6ee"/>
-          <path d="M265 132 L302 102 L340 132Z"
-                fill="#c96f49"/>
-          <path d="M287 112 L302 67 L317 112Z"
-                fill="#f8f6ee"/>
-          <path d="M296 67 L302 49 L308 67Z"
-                fill="#c96f49"/>
-          <rect x="295" y="153" width="15" height="30"
-                rx="7" fill="#5884aa"/>
-          <rect x="280" y="142" width="10" height="13"
-                fill="#79b6d7"/>
-          <rect x="315" y="142" width="10" height="13"
-                fill="#79b6d7"/>
-        </g>
-
-        <!-- Árvores -->
-        <g fill="#175d3b">
-          <circle cx="30" cy="155" r="25"/>
-          <circle cx="550" cy="150" r="30"/>
-          <circle cx="520" cy="175" r="20"/>
-          <circle cx="220" cy="185" r="16"/>
-        </g>
-      </svg>
+      <img
+        src="./tela-inicial-busca-emprega.png"
+        alt="Imagem da tela inicial do Busca Emprega"
+      >
     </div>
 
     <div class="localizacao">📍 Itiquira e região</div>
   </div>
 
+  <!-- BOTÃO 1 -->
   <div class="card cartao-inicio">
     <div class="icone-grande">👤</div>
     <h2>Sou candidato</h2>
     <p>Encontre oportunidades de trabalho na sua região.</p>
     <button class="botao verde"
-            onclick="abrirPagina('busca')">
+      onclick="abrirPagina('busca')">
       BUSCAR EMPREGO
     </button>
   </div>
 
+  <!-- BOTÃO 2 -->
   <div class="card cartao-inicio">
     <div class="icone-grande">🏢</div>
     <h2>Sou empresa</h2>
     <p>Encontre profissionais para sua empresa.</p>
     <button class="botao"
-            onclick="abrirPagina('empresa')">
+      onclick="abrirPagina('empresa')">
       OFERECER EMPREGO
     </button>
   </div>
 
+  <!-- BOTÃO 3 -->
   <div class="card cartao-inicio">
     <div class="icone-grande">📄</div>
     <h2>Cadastre seu currículo</h2>
     <p>Apresente suas experiências e habilidades às empresas.</p>
     <button class="botao escuro"
-            onclick="abrirPagina('curriculos')">
+      onclick="abrirPagina('curriculos')">
       MEU CURRÍCULO
     </button>
   </div>
 
   <div class="aviso">
     🛡️ <strong>Busca Emprega Soluções</strong><br>
-    Nosso objetivo é aproximar empresas e profissionais
-    e facilitar o acesso às oportunidades de trabalho.
+    Nosso objetivo é aproximar empresas e profissionais.
   </div>
 
   <div class="titulo-secao">
@@ -547,7 +419,7 @@ footer {
 
       <label for="telefoneEmpresa">Telefone ou WhatsApp</label>
       <input id="telefoneEmpresa" type="tel" required
-             placeholder="(00) 00000-0000">
+        placeholder="(00) 00000-0000">
 
       <h2>2. Informações da vaga</h2>
 
@@ -556,7 +428,7 @@ footer {
 
       <label for="quantidade">Quantidade de vagas</label>
       <input id="quantidade" type="number" min="1"
-             required placeholder="Ex.: 2">
+        required placeholder="Ex.: 2">
 
       <label for="salario">Salário oferecido</label>
       <input id="salario" required placeholder="Ex.: R$ 2.500,00">
@@ -580,7 +452,7 @@ footer {
 
       <label for="requisitos">Requisitos e especificações</label>
       <textarea id="requisitos" required
-                placeholder="Descreva os requisitos..."></textarea>
+        placeholder="Descreva os requisitos..."></textarea>
 
       <h2>3. Localização da vaga</h2>
 
@@ -597,11 +469,11 @@ footer {
 
       <label for="endereco">Endereço completo da vaga</label>
       <textarea id="endereco" required
-                placeholder="Rua, número, bairro e referência..."></textarea>
+        placeholder="Rua, número, bairro e referência..."></textarea>
 
       <label for="descricao">Descrição adicional</label>
       <textarea id="descricao"
-                placeholder="Outras informações importantes..."></textarea>
+        placeholder="Outras informações importantes..."></textarea>
 
       <div class="aviso">
         As publicações pagas ficarão pendentes até a confirmação
@@ -636,26 +508,26 @@ footer {
 
       <label for="telefoneCandidato">WhatsApp</label>
       <input id="telefoneCandidato" type="tel" required
-             placeholder="Seu WhatsApp">
+        placeholder="Seu WhatsApp">
 
       <label for="cidadeCandidato">Cidade onde mora</label>
       <input id="cidadeCandidato" required placeholder="Sua cidade">
 
       <label for="profissaoCandidato">Profissão que procura</label>
       <input id="profissaoCandidato" required
-             placeholder="Ex.: Auxiliar administrativo">
+        placeholder="Ex.: Auxiliar administrativo">
 
       <label for="experienciaCandidato">Experiência profissional</label>
       <textarea id="experienciaCandidato"
-                placeholder="Conte suas experiências..."></textarea>
+        placeholder="Conte suas experiências..."></textarea>
 
       <label for="escolaridadeCandidato">Escolaridade</label>
       <input id="escolaridadeCandidato"
-             placeholder="Ex.: Ensino médio completo">
+        placeholder="Ex.: Ensino médio completo">
 
       <label for="habilidadesCandidato">Suas habilidades</label>
       <textarea id="habilidadesCandidato"
-                placeholder="Descreva suas habilidades..."></textarea>
+        placeholder="Descreva suas habilidades..."></textarea>
 
       <button class="botao" type="submit">
         CADASTRAR CURRÍCULO
@@ -670,20 +542,7 @@ footer {
 
 </main>
 
-<nav class="menu-inferior">
-  <button class="ativo" onclick="abrirPagina('inicio')">
-    <span>🏠</span>Início
-  </button>
-  <button onclick="abrirPagina('busca')">
-    <span>🔎</span>Vagas
-  </button>
-  <button onclick="abrirPagina('curriculos')">
-    <span>📋</span>Currículos
-  </button>
-  <button onclick="abrirPagina('empresa')">
-    <span>🏢</span>Empresas
-  </button>
-</nav>
+<!-- MENU INFERIOR REMOVIDO PARA EVITAR DUPLICAÇÃO -->
 
 <footer>
   <strong>Busca Emprega Soluções</strong><br>
@@ -705,10 +564,6 @@ function abrirPagina(pagina) {
   if (pagina === "inicio") mostrarDestaques();
 
   window.scrollTo(0, 0);
-
-  document.querySelectorAll(".menu-inferior button").forEach(function(botao) {
-    botao.classList.remove("ativo");
-  });
 }
 
 function voltarInicio() {
@@ -852,13 +707,13 @@ document.getElementById("formBusca")
 
     const combinaProfissao =
       !profissao ||
-      String(vaga.cargo).toLowerCase().includes(profissao);
+      String(vaga.cargo || "").toLowerCase().includes(profissao);
 
     const combinaCidade =
       localidade !== "cidade" ||
       vaga.cidade === cidade;
 
-    const tipoVaga = String(vaga.tipo).toLowerCase();
+    const tipoVaga = String(vaga.tipo || "").toLowerCase();
 
     const combinaTipo =
       tipo === "todos" ||
@@ -866,7 +721,8 @@ document.getElementById("formBusca")
         (tipoVaga.includes("integral") ||
          tipoVaga.includes("carteira"))) ||
       (tipo === "meio" && tipoVaga.includes("meio")) ||
-      (tipo === "temporario" && tipoVaga.includes("temporário"));
+      (tipo === "temporario" &&
+        tipoVaga.includes("temporário"));
 
     return combinaProfissao && combinaCidade && combinaTipo;
   });
